@@ -79,29 +79,11 @@ async function showUpdatedAlert() {
       </div>
     </section>
 
-    <!-- Social Links -->
-    <section class="space-y-4">
-      <h3 class="text-sm font-semibold text-darkgray uppercase tracking-wide">Social Links</h3>
-
-      <div class="space-y-3">
-        <div class="flex items-center gap-2">
-          <i class="icon icon-facebook text-blue w-5 text-center"></i>
-          <input type="text" class="form-control" v-model.trim="auth.user.socials.facebook" placeholder="Facebook URL" />
-        </div>
-        <div class="flex items-center gap-2">
-          <i class="icon icon-twitter text-cyan w-5 text-center"></i>
-          <input type="text" class="form-control" v-model.trim="auth.user.socials.twitter" placeholder="Twitter URL" />
-        </div>
-        <div class="flex items-center gap-2">
-          <i class="icon icon-linkedin text-blue w-5 text-center"></i>
-          <input type="text" class="form-control" v-model.trim="auth.user.socials.linkedin" placeholder="LinkedIn URL" />
-        </div>
-        <div class="flex items-center gap-2">
-          <i class="icon icon-globe text-darkgray w-5 text-center"></i>
-          <input type="text" class="form-control" v-model.trim="auth.user.socials.website" placeholder="Website URL" />
-        </div>
-      </div>
-    </section>
+    <!-- Website -->
+    <div>
+      <label class="block text-sm mb-1 text-darkgray">Website</label>
+      <input type="text" class="form-control" v-model.trim="auth.user.socials.website" placeholder="https://yourwebsite.com" />
+    </div>
 
     <!-- Preferences -->
     <section class="space-y-4">

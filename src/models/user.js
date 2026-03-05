@@ -21,9 +21,6 @@ export function createUser(attrs = {}) {
     is_verified: attrs.is_verified ?? false,
     last_post_date: attrs.last_post_date || '',
     socials: {
-      facebook: attrs.socials?.facebook || '',
-      twitter: attrs.socials?.twitter || '',
-      linkedin: attrs.socials?.linkedin || '',
       website: attrs.socials?.website || '',
     },
 

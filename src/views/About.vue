@@ -125,7 +125,7 @@ async function handleFeedback() {
               </li>
               <li class="flex gap-3 items-start">
                 <span class="shrink-0 w-7 h-7 rounded-full bg-yellow/20 text-yellow font-bold text-sm flex items-center justify-center">4</span>
-                <span>Link your social media accounts or website.</span>
+                <span>Link your website or portfolio.</span>
               </li>
             </ul>
           </div>

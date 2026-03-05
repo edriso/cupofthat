@@ -35,7 +35,7 @@ const myProfile = computed(() => usersStore.author.id === auth.user.id)
 
 const authorHasBioOrSocials = computed(() => {
   const a = usersStore.author
-  return a.bio || a.socials?.facebook || a.socials?.twitter || a.socials?.linkedin || a.socials?.website
+  return a.bio || a.socials?.website
 })
 
 watch(currentUsername, () => setUserProfile())
@@ -172,21 +172,6 @@ onMounted(() => setUserProfile())
         <h5 class="font-medium mb-2">About Me</h5>
         <p v-if="usersStore.author.bio" class="text-darkgray mb-3">{{ usersStore.author.bio }}</p>
         <ul class="flex gap-4">
-          <li v-if="usersStore.author.socials?.facebook">
-            <a :href="usersStore.author.socials.facebook" target="_blank" rel="noopener noreferrer" class="text-blue hover:opacity-70" title="Facebook">
-              <i class="icon icon-facebook text-xl"></i>
-            </a>
-          </li>
-          <li v-if="usersStore.author.socials?.twitter">
-            <a :href="usersStore.author.socials.twitter" target="_blank" rel="noopener noreferrer" class="text-cyan hover:opacity-70" title="Twitter">
-              <i class="icon icon-twitter text-xl"></i>
-            </a>
-          </li>
-          <li v-if="usersStore.author.socials?.linkedin">
-            <a :href="usersStore.author.socials.linkedin" target="_blank" rel="noopener noreferrer" class="text-blue hover:opacity-70" title="LinkedIn">
-              <i class="icon icon-linkedin text-xl"></i>
-            </a>
-          </li>
           <li v-if="usersStore.author.socials?.website">
             <a :href="usersStore.author.socials.website" target="_blank" rel="noopener noreferrer" class="text-darkgray hover:opacity-70" title="Website">
               <i class="icon icon-globe text-xl"></i>
