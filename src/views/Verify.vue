@@ -2,6 +2,7 @@
 import { ref, onBeforeMount, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
+import LoginTemplate from '@/components/LoginTemplate.vue'
 import BaseAlert from '@/components/ui/BaseAlert.vue'
 import { createGuest } from '@/models/guest'
 import storejs from 'storejs'
@@ -56,22 +57,14 @@ async function resendCode() {
 </script>
 
 <template>
-  <main class="min-h-screen bg-nav pt-20 px-4">
-    <div class="max-w-md mx-auto bg-white rounded-lg p-6 shadow-lg">
-      <h3 class="text-lg font-medium mb-3">Please verify your email address</h3>
-      <p>
-        We sent the verification code to
-        <span class="font-medium text-cyan">{{ auth.guest.email }}</span>
+  <LoginTemplate>
+    <template #header>
+      <p class="text-center text-white mb-2">
+        &ldquo;Almost there!&rdquo;
       </p>
-      <p class="text-sm text-darkgray mt-1">Please check your spam or junk mail folder too!</p>
+    </template>
 
-      <form @submit.prevent="handleSubmit" class="mt-4">
-        <input type="text" class="form-control mb-3" placeholder="Verification Code" v-model.trim="auth.guest.verification_code" />
-        <button type="submit" class="btn btn-cta">Submit</button>
-      </form>
-
-      <hr class="my-4" />
-
+    <template #default>
       <BaseAlert v-if="alertMsg" :show="showAlert" variant="danger" dismissible @dismissed="showAlert = false">
         {{ alertMsg }}
       </BaseAlert>
@@ -79,9 +72,31 @@ async function resendCode() {
         {{ successMsg }}
       </BaseAlert>
 
-      <p class="text-cyan cursor-pointer hover:underline" @click="resendCode">Resend code?</p>
-      <p class="my-1">or</p>
-      <router-link :to="{ name: 'login' }" class="text-cyan hover:underline">Go back</router-link>
-    </div>
-  </main>
+      <div class="text-center mb-4">
+        <p class="text-white/80 text-sm">We sent a verification code to</p>
+        <p class="text-white font-medium">{{ auth.guest.email }}</p>
+        <p class="text-white/50 text-xs mt-1">Check your spam or junk folder too!</p>
+      </div>
+
+      <form @submit.prevent="handleSubmit">
+        <div class="mb-3">
+          <input type="text" class="form-control text-center tracking-widest" placeholder="Verification Code" v-model.trim="auth.guest.verification_code" maxlength="8" autocomplete="off" />
+        </div>
+        <button type="submit" class="btn btn-cta btn-block">Verify</button>
+      </form>
+
+      <div class="flex justify-between items-center mt-3 pt-1">
+        <p class="text-sm cursor-pointer hover:underline gray-text" @click="resendCode">Resend code</p>
+        <router-link :to="{ name: 'login' }" class="gray-text text-sm">
+          Back to <span class="text-white">Login</span>
+        </router-link>
+      </div>
+    </template>
+
+    <template #footer>
+      <h6 class="text-center text-sm mt-2">
+        <router-link :to="{ name: 'about' }" class="gray-text">About Us</router-link>
+      </h6>
+    </template>
+  </LoginTemplate>
 </template>
