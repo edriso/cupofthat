@@ -43,35 +43,35 @@ function handleToggleFollow(match) {
 <template>
   <main class="page-container pt-4">
     <div class="max-w-xl mx-auto">
-      <div class="bg-white rounded-lg shadow p-4 mb-4">
-        <form @submit.prevent="handleSearch">
-          <div class="flex border rounded overflow-hidden">
-            <input
-              type="text"
-              class="form-control flex-1 border-0"
-              placeholder="Write a name or username"
-              autocomplete="off"
-              v-model.lazy="searchKey"
-            />
-            <button class="btn btn-light px-6" type="submit">Search</button>
+      <form @submit.prevent="handleSearch" class="mb-4">
+        <div class="flex bg-white rounded-lg shadow overflow-hidden">
+          <div class="flex items-center pl-4 text-gray">
+            <i class="icon icon-search"></i>
           </div>
-        </form>
-      </div>
-
-      <div class="mt-3">
-        <ul v-if="usersMatch.length && searchKey" class="bg-white rounded-lg shadow p-4">
-          <SearchResult
-            v-for="match in usersMatch"
-            :key="match.id"
-            :match="match"
-            :isFollowing="isFollowingMatch(match)"
-            @toggleFollow="handleToggleFollow(match)"
+          <input
+            type="text"
+            class="flex-1 px-3 py-3 outline-none bg-transparent text-font placeholder-gray"
+            placeholder="Search by name or username"
+            autocomplete="off"
+            v-model.lazy="searchKey"
           />
-        </ul>
+          <button class="px-5 text-sm font-medium text-cyan hover:bg-bg transition-colors" type="submit">Search</button>
+        </div>
+      </form>
 
-        <h5 v-if="searchKey && !usersMatch.length && !app.loading" class="text-center text-darkgray mt-4">
-          We couldn't find "{{ searchKey }}"
-        </h5>
+      <ul v-if="usersMatch.length && searchKey" class="bg-white rounded-lg shadow divide-y divide-border-light">
+        <SearchResult
+          v-for="match in usersMatch"
+          :key="match.id"
+          :match="match"
+          :isFollowing="isFollowingMatch(match)"
+          @toggleFollow="handleToggleFollow(match)"
+        />
+      </ul>
+
+      <div v-if="searchKey && !usersMatch.length && !app.loading" class="text-center py-12">
+        <i class="icon icon-search text-3xl text-gray/50 mb-3 block"></i>
+        <p class="text-darkgray">No results for "{{ searchKey }}"</p>
       </div>
     </div>
   </main>
