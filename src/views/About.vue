@@ -178,7 +178,7 @@ async function handleFeedback() {
               </span>
               <span>
                 Got feedback? We'd love to hear it.
-                <button class="text-cyan font-semibold hover:underline cursor-pointer ml-1" @click="showFeedback = true">Contact us</button>
+                <button class="text-cyan font-semibold hover:underline ml-1" @click="showFeedback = true">Contact us</button>
               </span>
             </li>
           </ul>

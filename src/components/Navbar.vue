@@ -58,7 +58,7 @@ function logout() {
     </span>
 
     <!-- Mobile toggle -->
-    <button class="md:hidden ml-auto w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors cursor-pointer" @click="mobileOpen = !mobileOpen">
+    <button class="md:hidden ml-auto w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors" @click="mobileOpen = !mobileOpen">
       <i :class="mobileOpen ? 'icon icon-cancel-circled' : 'icon icon-dot-3'"></i>
     </button>
 
@@ -72,7 +72,7 @@ function logout() {
       </router-link>
 
       <div ref="dropdownRef" class="relative">
-        <button @click="dropdownOpen = !dropdownOpen" class="hover:text-cyan transition-colors p-1 cursor-pointer">
+        <button @click="dropdownOpen = !dropdownOpen" class="hover:text-cyan transition-colors p-1">
           <i class="icon icon-dot-3"></i>
         </button>
         <Transition
@@ -94,7 +94,7 @@ function logout() {
               <i class="icon icon-info"></i> About
             </router-link>
             <div class="my-1 border-t border-border-light"></div>
-            <button class="flex items-center gap-2 w-full text-left px-4 py-2.5 hover:bg-bg text-sm text-react cursor-pointer" @click="logout">
+            <button class="flex items-center gap-2 w-full text-left px-4 py-2.5 hover:bg-bg text-sm text-react" @click="logout">
               <i class="icon icon-logout"></i> Logout
             </button>
           </div>
@@ -188,7 +188,7 @@ function logout() {
         <!-- Logout -->
         <div class="border-t border-white/10 py-2">
           <button
-            class="flex items-center gap-3 px-5 py-3 w-full text-left hover:bg-white/10 transition-colors text-react/80 cursor-pointer"
+            class="flex items-center gap-3 px-5 py-3 w-full text-left hover:bg-white/10 transition-colors text-react/80"
             @click="logout"
           >
             <i class="icon icon-logout w-5 text-center"></i>

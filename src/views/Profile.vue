@@ -33,7 +33,7 @@ const authorPhoto = computed(() => getProfileImage(usersStore.author))
 const authorCover = computed(() => getCoverImage(usersStore.author))
 const myProfile = computed(() => usersStore.author.id === auth.user.id)
 
-const authorHasBioOrSocials = computed(() => {
+const authorHasBioOrWebsite = computed(() => {
   const a = usersStore.author
   return a.bio || a.socials?.website
 })
@@ -115,28 +115,23 @@ onMounted(() => setUserProfile())
     <div class="max-w-xl mx-auto">
       <MakePost v-if="auth.hasNotPostedToday" />
 
+      <!-- Profile Card -->
       <div class="bg-white rounded-lg shadow overflow-hidden mt-4 mb-4">
+        <!-- Cover Photo -->
         <div
-          class="h-40 bg-cover bg-center relative"
+          class="h-44 bg-cover bg-center relative bg-nav/10"
           :style="{ backgroundImage: `url(${authorCover})` }"
-        ></div>
-
-        <div class="relative px-4 pb-4">
-          <img
-            :src="authorPhoto"
-            alt="profile picture"
-            class="w-24 h-24 rounded-full object-cover border-4 border-white -mt-12 relative z-10"
-          />
-
-          <div v-if="myProfile" class="absolute top-2 right-2">
-            <BaseDropdown noCaret dropleft size="sm">
+        >
+          <!-- My profile menu (top-right on cover) -->
+          <div v-if="myProfile" class="absolute top-3 right-3">
+            <BaseDropdown noCaret dropleft size="sm" variant="white">
               <template #button-content>
                 <i class="icon icon-dot-3"></i>
               </template>
-              <button class="block w-full text-left px-4 py-2 hover:bg-bg text-xs cursor-pointer whitespace-nowrap" @click="changeProfile?.openPicker()">
+              <button class="block w-full text-left px-4 py-2 hover:bg-bg text-xs whitespace-nowrap" @click="changeProfile?.openPicker()">
                 Change profile picture
               </button>
-              <button class="block w-full text-left px-4 py-2 hover:bg-bg text-xs cursor-pointer whitespace-nowrap" @click="changeCover?.openPicker()">
+              <button class="block w-full text-left px-4 py-2 hover:bg-bg text-xs whitespace-nowrap" @click="changeCover?.openPicker()">
                 Change cover photo
               </button>
               <div class="my-0.5 border-t border-border-light"></div>
@@ -146,75 +141,118 @@ onMounted(() => setUserProfile())
             </BaseDropdown>
           </div>
 
-          <template v-if="myProfile">
-            <ChangeCoverPhoto ref="changeCover" />
-            <ChangeProfilePicture ref="changeProfile" />
-          </template>
+          <!-- Other user: block menu (top-right on cover) -->
+          <div v-if="!myProfile" class="absolute top-3 right-3">
+            <BaseDropdown noCaret dropleft size="sm" variant="white">
+              <template #button-content>
+                <i class="icon icon-dot-3"></i>
+              </template>
+              <button
+                class="block w-full text-left px-4 py-2 hover:bg-bg text-xs whitespace-nowrap text-react"
+                @click="showBlockModal = true"
+              >
+                {{ isBlocked ? 'Unblock user' : 'Block user' }}
+              </button>
+            </BaseDropdown>
+          </div>
+        </div>
 
-          <h3 class="text-xl font-bold mt-2">
+        <!-- Profile Info -->
+        <div class="relative px-5 pb-5">
+          <!-- Avatar -->
+          <div class="flex items-end justify-between -mt-12 mb-3">
+            <img
+              :src="authorPhoto"
+              alt="profile picture"
+              class="w-24 h-24 rounded-full object-cover border-4 border-white relative z-10 shadow-sm"
+            />
+
+            <!-- Follow button for other users -->
+            <div v-if="!myProfile && !isBlocked" class="pb-1">
+              <button
+                class="btn btn-sm transition-all"
+                :class="isFollowing
+                  ? 'bg-nav/10 text-nav hover:bg-react/10 hover:text-react'
+                  : 'btn-cta'"
+                @click="toggleFollow"
+              >
+                <template v-if="isFollowing">
+                  <i class="icon icon-ok-circled"></i>
+                  <span class="ml-1">Following</span>
+                </template>
+                <template v-else>
+                  <i class="icon icon-plus-circled"></i>
+                  <span class="ml-1">Follow</span>
+                </template>
+              </button>
+            </div>
+          </div>
+
+          <!-- Name & Craft -->
+          <h3 class="text-xl font-bold">
             {{ usersStore.author.name }}
             <span v-if="usersStore.userBadge && myProfile" class="text-cyan" :title="`Active for ${usersStore.userBadge.value || ''} days`">
               <i :class="'icon icon-' + usersStore.userBadge.icon"></i>
             </span>
           </h3>
 
-          <p class="text-darkgray">{{ usersStore.author.craft }}</p>
+          <p v-if="usersStore.author.craft" class="text-darkgray text-sm">{{ usersStore.author.craft }}</p>
 
-          <p class="mt-1">
-            <span class="inline-flex items-center gap-1 bg-nav/10 text-nav px-2 py-0.5 rounded-full text-sm font-medium">
+          <!-- Stats row -->
+          <div class="flex items-center gap-3 mt-3">
+            <span class="inline-flex items-center gap-1 bg-nav/10 text-nav px-2.5 py-1 rounded-full text-sm font-medium">
               <i class="icon icon-cup"></i> {{ usersStore.author.postsCount }}
             </span>
-          </p>
+            <span v-if="usersStore.author.followers" class="text-sm text-darkgray">
+              <strong class="text-font">{{ usersStore.author.followers.length }}</strong> followers
+            </span>
+          </div>
+
+          <!-- Bio & Website -->
+          <div v-if="authorHasBioOrWebsite" class="mt-4 pt-4 border-t border-border-light">
+            <p v-if="usersStore.author.bio" class="text-sm text-darkgray leading-relaxed">{{ usersStore.author.bio }}</p>
+            <a
+              v-if="usersStore.author.socials?.website"
+              :href="usersStore.author.socials.website"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1 text-sm text-cyan hover:text-cyan-dark mt-2"
+            >
+              <i class="icon icon-globe"></i>
+              {{ usersStore.author.socials.website.replace(/^https?:\/\//, '') }}
+            </a>
+          </div>
         </div>
       </div>
 
-      <div v-if="authorHasBioOrSocials" class="bg-white rounded-lg shadow p-4 mb-4">
-        <h5 class="font-medium mb-2">About Me</h5>
-        <p v-if="usersStore.author.bio" class="text-darkgray mb-3">{{ usersStore.author.bio }}</p>
-        <ul class="flex gap-4">
-          <li v-if="usersStore.author.socials?.website">
-            <a :href="usersStore.author.socials.website" target="_blank" rel="noopener noreferrer" class="text-darkgray hover:opacity-70" title="Website">
-              <i class="icon icon-globe text-xl"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
+      <template v-if="myProfile">
+        <ChangeCoverPhoto ref="changeCover" />
+        <ChangeProfilePicture ref="changeProfile" />
+      </template>
 
-      <div v-if="!myProfile" class="bg-white rounded-lg shadow p-4 mb-4 flex gap-2">
-        <button
-          v-if="!isBlocked"
-          class="btn btn-sm"
-          :class="isFollowing ? 'btn-success' : 'btn-white'"
-          @click="toggleFollow"
-        >
-          <i class="icon icon-plus-circled"></i>
-          <span class="ml-1">{{ isFollowing ? 'Following' : 'Follow' }}</span>
-        </button>
-        <button
-          class="btn btn-sm text-react"
-          :class="isBlocked ? 'btn-pink' : 'btn-white'"
-          @click="showBlockModal = true"
-        >
-          <i class="icon icon-cancel-circled"></i>
-          {{ isBlocked ? 'Unblock' : 'Block' }}
-        </button>
-
-        <BaseModal v-model="showBlockModal">
-          <h5>
-            <span v-if="!isBlocked">Block</span><span v-else>Unblock</span>
-            {{ usersStore.author.name }}?
+      <!-- Block Modal -->
+      <BaseModal v-model="showBlockModal" size="sm">
+        <div class="text-center py-2">
+          <div class="w-12 h-12 rounded-full bg-react/10 flex items-center justify-center mx-auto mb-3">
+            <i class="icon icon-cancel-circled text-react text-xl"></i>
+          </div>
+          <h5 class="font-semibold mb-1">
+            {{ isBlocked ? 'Unblock' : 'Block' }} {{ usersStore.author.name }}?
           </h5>
-          <template #footer>
-            <button class="btn btn-light" @click="showBlockModal = false">Cancel</button>
-            <button class="btn btn-pink ml-2" @click="handleBlock">
-              <span v-if="!isBlocked">Block</span><span v-else>Unblock</span>
+          <p v-if="!isBlocked" class="text-sm text-darkgray">They won't be able to see your profile or posts.</p>
+          <p v-else class="text-sm text-darkgray">They will be able to see your profile and posts again.</p>
+        </div>
+        <template #footer>
+          <div class="flex gap-2 w-full">
+            <button class="btn btn-light flex-1" @click="showBlockModal = false">Cancel</button>
+            <button class="btn flex-1" :class="isBlocked ? 'btn-cta' : 'btn-pink'" @click="handleBlock">
+              {{ isBlocked ? 'Unblock' : 'Block' }}
             </button>
-          </template>
-        </BaseModal>
-      </div>
+          </div>
+        </template>
+      </BaseModal>
 
-      <hr class="my-4 border-border" />
-
+      <!-- Posts -->
       <div v-if="usersStore.authorPosts.length">
         <template v-if="myProfile">
           <PostProfile
@@ -235,6 +273,12 @@ onMounted(() => setUserProfile())
           <ReportPost ref="reporting" />
         </template>
         <PostImageModal ref="showImageModal" />
+      </div>
+
+      <!-- Empty state -->
+      <div v-else class="text-center py-12 text-darkgray">
+        <i class="icon icon-cup text-3xl text-gray mb-2 block"></i>
+        <p class="text-sm">No posts yet.</p>
       </div>
     </div>
   </main>

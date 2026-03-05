@@ -111,7 +111,7 @@ onMounted(() => {
         <div class="px-5 pt-5 pb-3">
           <div class="flex items-center justify-between mb-1">
             <button
-              class="w-8 h-8 flex items-center justify-center rounded-full text-gray hover:text-font hover:bg-lightgray transition-colors cursor-pointer text-lg"
+              class="w-8 h-8 flex items-center justify-center rounded-full text-gray hover:text-font hover:bg-lightgray transition-colors text-lg"
               @click="prevMonth"
             >
               &lsaquo;
@@ -120,7 +120,7 @@ onMounted(() => {
               {{ monthName }} <span class="text-gray font-normal">{{ year }}</span>
             </h3>
             <button
-              class="w-8 h-8 flex items-center justify-center rounded-full text-gray hover:text-font hover:bg-lightgray transition-colors cursor-pointer text-lg"
+              class="w-8 h-8 flex items-center justify-center rounded-full text-gray hover:text-font hover:bg-lightgray transition-colors text-lg"
               @click="nextMonth"
             >
               &rsaquo;
@@ -187,7 +187,7 @@ onMounted(() => {
               {{ selectedDateLabel }}
             </p>
             <button
-              class="text-xs text-gray hover:text-darkgray cursor-pointer"
+              class="text-xs text-gray hover:text-darkgray"
               @click="selectedDay = null; selectedPost = {}"
             >
               <i class="icon icon-cancel-circled"></i>

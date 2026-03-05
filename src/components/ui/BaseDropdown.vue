@@ -29,7 +29,7 @@ onBeforeUnmount(() => document.removeEventListener('click', handleClickOutside))
 <template>
   <div ref="dropdownRef" class="relative inline-block">
     <button
-      class="btn cursor-pointer"
+      class="btn"
       :class="[
         size === 'sm' ? 'btn-sm' : '',
         variant === 'white' ? 'btn-white' : '',

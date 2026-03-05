@@ -56,7 +56,7 @@ onMounted(() => {
 
         <div class="flex items-center gap-0.5 shrink-0 -mt-0.5">
           <button
-            class="flex items-center gap-1 transition-colors cursor-pointer p-1"
+            class="flex items-center gap-1 transition-colors p-1"
             :class="post.liked ? 'text-react' : 'text-gray hover:text-react'"
             @click="handleLikes"
           >
@@ -67,7 +67,7 @@ onMounted(() => {
             <template #button-content>
               <i class="icon icon-dot-3 text-gray text-sm"></i>
             </template>
-            <button class="block w-full text-left px-4 py-2 hover:bg-bg text-xs cursor-pointer" @click="showEdit = true">
+            <button class="block w-full text-left px-4 py-2 hover:bg-bg text-xs" @click="showEdit = true">
               Edit Post
             </button>
           </BaseDropdown>

@@ -81,10 +81,10 @@ onMounted(() => {
           <template #button-content>
             <i class="icon icon-dot-3 text-gray"></i>
           </template>
-          <button v-if="isUserPostOwner" class="block w-full text-left px-4 py-2 hover:bg-bg text-sm cursor-pointer" @click="showEdit = true">
+          <button v-if="isUserPostOwner" class="block w-full text-left px-4 py-2 hover:bg-bg text-sm" @click="showEdit = true">
             Edit Post
           </button>
-          <button v-else class="block w-full text-left px-4 py-2 hover:bg-bg text-sm cursor-pointer" @click="emit('report')">
+          <button v-else class="block w-full text-left px-4 py-2 hover:bg-bg text-sm" @click="emit('report')">
             Report Abuse
           </button>
         </BaseDropdown>
@@ -107,7 +107,7 @@ onMounted(() => {
 
       <div class="flex items-center pt-2 border-t border-border-light">
         <button
-          class="flex items-center gap-1.5 transition-colors text-sm cursor-pointer"
+          class="flex items-center gap-1.5 transition-colors text-sm"
           :class="post.liked ? 'text-react' : 'text-gray hover:text-react'"
           @click="handlePostLikes"
         >

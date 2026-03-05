@@ -61,7 +61,7 @@ const handlePost = handleSubmit(async (values) => {
 <template>
   <div>
     <button
-      class="fixed bottom-6 right-6 z-30 w-14 h-14 rounded-full bg-nav text-white shadow-lg hover:bg-nav-dark hover:shadow-xl active:scale-95 transition-all flex items-center justify-center cursor-pointer"
+      class="fixed bottom-6 right-6 z-30 w-14 h-14 rounded-full bg-nav text-white shadow-lg hover:bg-nav-dark hover:shadow-xl active:scale-95 transition-all flex items-center justify-center"
       @click="showModal = true"
     >
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -75,7 +75,7 @@ const handlePost = handleSubmit(async (values) => {
         <div class="flex items-center justify-between">
           <h3 class="text-lg font-semibold text-font">Day #{{ auth.user.postsCount + 1 }}</h3>
           <button
-            class="w-8 h-8 flex items-center justify-center rounded-full text-gray hover:text-darkgray hover:bg-lightgray transition-colors cursor-pointer"
+            class="w-8 h-8 flex items-center justify-center rounded-full text-gray hover:text-darkgray hover:bg-lightgray transition-colors"
             @click="showModal = false"
           >
             <i class="icon icon-cancel-circled"></i>

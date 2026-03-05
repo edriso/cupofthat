@@ -85,7 +85,7 @@ async function handlePostUpdate() {
     <template #footer>
       <div class="flex justify-between items-center w-full">
         <input type="text" class="form-control w-32 text-sm" maxlength="30" placeholder="# Tag" v-model.trim="post.tag" />
-        <button :disabled="app.loading" class="btn btn-sm btn-cta cursor-pointer" type="submit" :form="`post${postId}-form`">
+        <button :disabled="app.loading" class="btn btn-sm btn-cta" type="submit" :form="`post${postId}-form`">
           {{ app.loading ? 'Updating...' : 'Update' }}
         </button>
       </div>
