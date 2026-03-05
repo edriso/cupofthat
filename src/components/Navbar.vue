@@ -49,16 +49,16 @@ function logout() {
     v-if="auth.user"
     class="fixed top-0 left-0 right-0 z-40 bg-nav text-white h-[var(--spacing-navbar)] flex items-center px-4 shadow-md"
   >
-    <router-link :to="{ name: 'feeds' }" class="flex items-center gap-2 hover:opacity-90 transition-opacity">
+    <router-link :to="{ name: 'feeds' }" class="flex items-center hover:opacity-90 transition-opacity shrink-0">
       <img :src="logoSvg" class="h-8" alt="logo" />
     </router-link>
 
-    <span class="ml-3 text-sm hidden md:inline opacity-80">
+    <span class="text-sm opacity-80 md:ml-3 flex-1 text-center md:text-left md:flex-none truncate px-2">
       Good {{ time }}, {{ auth.user.firstname }}!
     </span>
 
     <!-- Mobile toggle -->
-    <button class="md:hidden ml-auto w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors" @click="mobileOpen = !mobileOpen">
+    <button class="md:hidden w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors shrink-0" @click="mobileOpen = !mobileOpen">
       <i :class="mobileOpen ? 'icon icon-cancel-circled' : 'icon icon-dot-3'"></i>
     </button>
 
