@@ -83,37 +83,33 @@
 @utility btn-yellow {
   background-color: var(--color-yellow);
   color: #fff;
-}
-
-@utility btn-yellow:hover {
-  background-color: #e5b343;
+  &:hover {
+    background-color: #e5b343;
+  }
 }
 
 @utility btn-pink {
   background-color: var(--color-react);
   color: #fff;
-}
-
-@utility btn-pink:hover {
-  background-color: #e04e5e;
+  &:hover {
+    background-color: #e04e5e;
+  }
 }
 
 @utility btn-success {
   background-color: var(--color-green);
   color: #fff;
-}
-
-@utility btn-success:hover {
-  background-color: #4cc97f;
+  &:hover {
+    background-color: #4cc97f;
+  }
 }
 
 @utility btn-primary {
   background-color: var(--color-cyan);
   color: #fff;
-}
-
-@utility btn-primary:hover {
-  background-color: #7fb5b8;
+  &:hover {
+    background-color: #7fb5b8;
+  }
 }
 
 @utility btn-light {
@@ -139,12 +135,11 @@
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out;
-}
-
-@utility form-control:focus {
-  border-color: var(--color-cyan);
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(145, 197, 200, 0.25);
+  &:focus {
+    border-color: var(--color-cyan);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(145, 197, 200, 0.25);
+  }
 }
 
 @utility invalid-feedback {
