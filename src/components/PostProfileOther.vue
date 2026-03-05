@@ -33,9 +33,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-white rounded-lg shadow mb-4 overflow-hidden">
-    <div v-if="post.image" class="cursor-pointer" @click="emit('showPostImage')">
-      <img :src="post.image" alt="Post photo" class="w-full object-cover max-h-80" loading="lazy" />
+  <div class="bg-white rounded-lg shadow mb-4 overflow-hidden hover:shadow-md transition-shadow">
+    <div v-if="post.image" class="cursor-pointer overflow-hidden" @click="emit('showPostImage')">
+      <img :src="post.image" alt="Post photo" class="w-full object-cover max-h-80 hover:scale-[1.02] transition-transform duration-300" loading="lazy" />
     </div>
 
     <div class="p-4">
