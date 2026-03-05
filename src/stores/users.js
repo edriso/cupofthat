@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { useAuthStore } from '@/stores/auth'
 import { createUser } from '@/models/user'
 import { createPost } from '@/models/post'
 import {
@@ -20,9 +21,13 @@ export const useUsersStore = defineStore('users', () => {
 
   async function fetchUserProfile(username) {
     if (USE_MOCKS) {
-      const userData = username === MOCK_USER.username ? MOCK_USER : MOCK_OTHER_USER
-      author.value = createUser(userData)
-      return { data: { user: userData } }
+      const auth = useAuthStore()
+      if (username === auth.user.username) {
+        author.value = createUser(auth.user)
+      } else {
+        author.value = createUser(MOCK_OTHER_USER)
+      }
+      return { data: { user: author.value } }
     }
     const { data } = await api.get(`/users/${username}`)
     author.value = createUser(data.user)
