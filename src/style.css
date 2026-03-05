@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./styles/fontello/css/fontello.css";
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
 @theme {
   --color-yellow: #fdc64a;
@@ -25,15 +26,6 @@
 }
 
 @layer base {
-  @font-face {
-    font-family: "Quicksand";
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url("https://fonts.gstatic.com/s/quicksand/v31/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkP8o58a-xI.woff2")
-      format("woff2");
-  }
-
   * {
     margin: 0;
     padding: 0;

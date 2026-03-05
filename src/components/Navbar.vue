@@ -57,38 +57,18 @@ function logout() {
       Good {{ time }}, {{ auth.user.firstname }}!
     </span>
 
-    <button class="md:hidden ml-auto text-white text-2xl p-1 cursor-pointer" @click="mobileOpen = !mobileOpen">
+    <!-- Mobile toggle -->
+    <button class="md:hidden ml-auto w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors cursor-pointer" @click="mobileOpen = !mobileOpen">
       <i :class="mobileOpen ? 'icon icon-cancel-circled' : 'icon icon-dot-3'"></i>
     </button>
 
-    <div
-      class="ml-auto items-center gap-4"
-      :class="[
-        mobileOpen
-          ? 'flex flex-col absolute top-[4.375rem] left-0 right-0 bg-nav p-4 shadow-lg border-t border-white/10'
-          : 'hidden md:flex',
-      ]"
-    >
-      <router-link
-        :to="{ name: 'feeds' }"
-        class="md:hidden hover:text-cyan transition-colors flex items-center gap-2 py-1"
-      >
-        <i class="icon icon-newspaper"></i> Feeds
-      </router-link>
-
-      <router-link
-        :to="{ name: 'myaccount' }"
-        class="md:hidden hover:text-cyan transition-colors flex items-center gap-2 py-1"
-      >
-        <i class="icon icon-user"></i> Profile
-      </router-link>
-
+    <!-- Desktop nav -->
+    <div class="hidden md:flex ml-auto items-center gap-4">
       <router-link
         :to="{ name: 'calendar' }"
-        class="hover:text-cyan transition-colors flex items-center gap-2 py-1"
+        class="hover:text-cyan transition-colors p-1"
       >
         <i class="icon icon-calendar"></i>
-        <span class="md:hidden">Calendar</span>
       </router-link>
 
       <div ref="dropdownRef" class="relative">
@@ -113,7 +93,7 @@ function logout() {
             <router-link :to="{ name: 'about' }" class="flex items-center gap-2 px-4 py-2.5 hover:bg-gray-50 text-sm">
               <i class="icon icon-info"></i> About
             </router-link>
-            <hr class="my-1" />
+            <div class="my-1 border-t border-gray-100"></div>
             <button class="flex items-center gap-2 w-full text-left px-4 py-2.5 hover:bg-gray-50 text-sm text-react cursor-pointer" @click="logout">
               <i class="icon icon-logout"></i> Logout
             </button>
@@ -121,10 +101,7 @@ function logout() {
         </Transition>
       </div>
 
-      <router-link
-        :to="{ name: 'myaccount' }"
-        class="hidden md:block"
-      >
+      <router-link :to="{ name: 'myaccount' }">
         <img
           :src="getProfileImage(auth.user)"
           class="w-8 h-8 rounded-full object-cover ring-2 ring-white/30 hover:ring-cyan transition-all"
@@ -132,5 +109,93 @@ function logout() {
         />
       </router-link>
     </div>
+
+    <!-- Mobile menu overlay -->
+    <Transition
+      enter-active-class="transition duration-200 ease-out"
+      enter-from-class="opacity-0"
+      enter-to-class="opacity-100"
+      leave-active-class="transition duration-150 ease-in"
+      leave-from-class="opacity-100"
+      leave-to-class="opacity-0"
+    >
+      <div v-if="mobileOpen" class="md:hidden fixed inset-0 z-30 bg-black/40" @click="mobileOpen = false"></div>
+    </Transition>
+    <Transition
+      enter-active-class="transition duration-200 ease-out"
+      enter-from-class="-translate-y-full opacity-0"
+      enter-to-class="translate-y-0 opacity-100"
+      leave-active-class="transition duration-150 ease-in"
+      leave-from-class="translate-y-0 opacity-100"
+      leave-to-class="-translate-y-full opacity-0"
+    >
+      <div
+        v-if="mobileOpen"
+        class="md:hidden fixed top-[4.375rem] left-0 right-0 z-40 bg-nav shadow-xl"
+      >
+        <!-- Profile card -->
+        <div class="flex items-center gap-3 px-5 py-4 border-b border-white/10">
+          <img
+            :src="getProfileImage(auth.user)"
+            class="w-10 h-10 rounded-full object-cover ring-2 ring-white/20"
+            :alt="auth.user.username + ' profile'"
+          />
+          <div>
+            <p class="font-semibold text-sm">{{ auth.user.firstname }} {{ auth.user.lastname }}</p>
+            <p class="text-xs text-white/60">@{{ auth.user.username }}</p>
+          </div>
+        </div>
+
+        <!-- Nav links -->
+        <div class="py-2">
+          <router-link
+            :to="{ name: 'feeds' }"
+            class="flex items-center gap-3 px-5 py-3 hover:bg-white/10 transition-colors"
+          >
+            <i class="icon icon-newspaper w-5 text-center text-white/70"></i>
+            <span class="text-sm">Feeds</span>
+          </router-link>
+          <router-link
+            :to="{ name: 'myaccount' }"
+            class="flex items-center gap-3 px-5 py-3 hover:bg-white/10 transition-colors"
+          >
+            <i class="icon icon-user w-5 text-center text-white/70"></i>
+            <span class="text-sm">My Profile</span>
+          </router-link>
+          <router-link
+            :to="{ name: 'calendar' }"
+            class="flex items-center gap-3 px-5 py-3 hover:bg-white/10 transition-colors"
+          >
+            <i class="icon icon-calendar w-5 text-center text-white/70"></i>
+            <span class="text-sm">Calendar</span>
+          </router-link>
+          <router-link
+            :to="{ name: 'settings' }"
+            class="flex items-center gap-3 px-5 py-3 hover:bg-white/10 transition-colors"
+          >
+            <i class="icon icon-cog w-5 text-center text-white/70"></i>
+            <span class="text-sm">Settings</span>
+          </router-link>
+          <router-link
+            :to="{ name: 'about' }"
+            class="flex items-center gap-3 px-5 py-3 hover:bg-white/10 transition-colors"
+          >
+            <i class="icon icon-info w-5 text-center text-white/70"></i>
+            <span class="text-sm">About</span>
+          </router-link>
+        </div>
+
+        <!-- Logout -->
+        <div class="border-t border-white/10 py-2">
+          <button
+            class="flex items-center gap-3 px-5 py-3 w-full text-left hover:bg-white/10 transition-colors text-react/80 cursor-pointer"
+            @click="logout"
+          >
+            <i class="icon icon-logout w-5 text-center"></i>
+            <span class="text-sm">Logout</span>
+          </button>
+        </div>
+      </div>
+    </Transition>
   </nav>
 </template>

@@ -55,7 +55,7 @@ function setUserProfile() {
   if (username) {
     if (username === auth.user.username) usersStore.getBadge()
     usersStore.fetchUserProfile(username).then(() => {
-      document.title = `CUP OF THAT | ${usersStore.author.name}'s profile`
+      document.title = `Cup Of That | ${usersStore.author.name}'s Profile`
       usersStore.fetchUserPosts(username)
     })
   }
@@ -133,16 +133,15 @@ onMounted(() => setUserProfile())
               <template #button-content>
                 <i class="icon icon-dot-3"></i>
               </template>
-              <button class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm cursor-pointer" @click="changeProfile?.openPicker()">
-                Change profile picture
+              <button class="flex items-center gap-2 w-full text-left px-4 py-2.5 hover:bg-gray-50 text-sm cursor-pointer" @click="changeProfile?.openPicker()">
+                <i class="icon icon-user text-gray-400"></i> Change profile picture
               </button>
-              <hr class="my-1" />
-              <button class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm cursor-pointer" @click="changeCover?.openPicker()">
-                Change cover photo
+              <button class="flex items-center gap-2 w-full text-left px-4 py-2.5 hover:bg-gray-50 text-sm cursor-pointer" @click="changeCover?.openPicker()">
+                <i class="icon icon-globe text-gray-400"></i> Change cover photo
               </button>
-              <hr class="my-1" />
-              <router-link :to="{ name: 'settings' }" class="block px-4 py-2 hover:bg-gray-50 text-sm">
-                Edit profile
+              <div class="my-1 border-t border-gray-100"></div>
+              <router-link :to="{ name: 'settings' }" class="flex items-center gap-2 px-4 py-2.5 hover:bg-gray-50 text-sm">
+                <i class="icon icon-cog text-gray-400"></i> Edit profile
               </router-link>
             </BaseDropdown>
           </div>
