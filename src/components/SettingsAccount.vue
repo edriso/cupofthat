@@ -67,77 +67,115 @@ function openUsername() {
   guest.value.username = auth.user.username
   showUsername.value = true
 }
+
+const accountItems = [
+  { label: 'Change Password', icon: 'icon-cog', action: () => (showPassword.value = true) },
+  { label: 'Change Username', icon: 'icon-user', action: () => openUsername() },
+  { label: 'Change Email', icon: 'icon-link', action: () => (showEmail.value = true) },
+]
+
+const listItems = [
+  { label: 'Following', icon: 'icon-ok-circled', count: () => auth.user.following.length, action: () => (showFollowing.value = true) },
+  { label: 'Followers', icon: 'icon-heart', count: () => auth.user.followers.length, action: () => (showFollowers.value = true) },
+  { label: 'Blocked', icon: 'icon-cancel-circled', count: () => auth.user.blocklist.length, action: () => (showBlocked.value = true) },
+]
 </script>
 
 <template>
-  <div>
-    <div class="max-w-md mx-auto">
-      <ul class="bg-white rounded-lg shadow divide-y">
-        <li class="px-4 py-3 cursor-pointer hover:bg-bg" @click="showFollowing = true">Following List</li>
-        <li class="px-4 py-3 cursor-pointer hover:bg-bg" @click="showFollowers = true">Followers List</li>
-        <li class="px-4 py-3 cursor-pointer hover:bg-bg" @click="showBlocked = true">Blocked List</li>
-        <li class="px-4 py-3 cursor-pointer hover:bg-bg" @click="showPassword = true">Change Password</li>
-        <li class="px-4 py-3 cursor-pointer hover:bg-bg" @click="openUsername">Change Username</li>
-        <li class="px-4 py-3 cursor-pointer hover:bg-bg" @click="showEmail = true">Change Email</li>
-      </ul>
-    </div>
+  <div class="space-y-6">
+    <!-- Account -->
+    <section class="space-y-2">
+      <h3 class="text-sm font-semibold text-darkgray uppercase tracking-wide">Account</h3>
 
-    <BaseModal v-model="showFollowing" :title="`Following List (${auth.user.following.length})`" hideFooter hideBackdrop>
-      <ListFollowing />
-    </BaseModal>
-
-    <BaseModal v-model="showFollowers" :title="`Followers List (${auth.user.followers.length})`" hideFooter hideBackdrop>
-      <ListFollowers />
-    </BaseModal>
-
-    <BaseModal v-model="showBlocked" :title="`Blocked List (${auth.user.blocklist.length})`" hideFooter hideBackdrop>
-      <ListBlocked />
-    </BaseModal>
-
-    <BaseModal v-model="showPassword" title="Change Password" hideBackdrop>
-      <BaseAlert v-if="showPasswordAlert" :show="true" variant="danger" dismissible @dismissed="showPasswordAlert = false">
-        {{ msgAlert }}
-      </BaseAlert>
-      <div class="space-y-3">
-        <input type="password" class="form-control" placeholder="Current Password" v-model="guest.old_password" />
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <input type="password" class="form-control" placeholder="New Password" v-model="guest.password" />
-          <input type="password" class="form-control" placeholder="Confirm New Password" v-model="guest.password_confirmation" />
-        </div>
+      <div class="bg-white rounded-lg shadow-sm overflow-hidden divide-y divide-border-light">
+        <button
+          v-for="item in accountItems"
+          :key="item.label"
+          class="w-full flex items-center gap-3 px-4 py-3 hover:bg-bg transition-colors text-left"
+          @click="item.action"
+        >
+          <i :class="['icon', item.icon, 'text-darkgray']"></i>
+          <span class="text-sm">{{ item.label }}</span>
+        </button>
       </div>
-      <template #footer>
-        <button class="btn btn-sm btn-success" :disabled="app.loading" @click="handlePassword">
-          {{ app.loading ? 'Updating...' : 'Update' }}
-        </button>
-      </template>
-    </BaseModal>
+    </section>
 
-    <BaseModal v-model="showUsername" title="Change Username" hideBackdrop>
-      <BaseAlert v-if="showUsernameAlert" :show="true" variant="danger" dismissible @dismissed="showUsernameAlert = false">
-        {{ msgAlert }}
-      </BaseAlert>
-      <input type="text" class="form-control" minlength="6" maxlength="20" placeholder="Cupofthat.com/username" v-model.trim="guest.username" />
-      <template #footer>
-        <button class="btn btn-sm btn-success" :disabled="app.loading" @click="handleUsername">
-          {{ app.loading ? 'Updating...' : 'Update' }}
-        </button>
-      </template>
-    </BaseModal>
+    <!-- People Lists -->
+    <section class="space-y-2">
+      <h3 class="text-sm font-semibold text-darkgray uppercase tracking-wide">People</h3>
 
-    <BaseModal v-model="showEmail" title="Change Email" hideBackdrop>
-      <BaseAlert v-if="showEmailAlert" :show="true" variant="danger" dismissible @dismissed="showEmailAlert = false">
-        {{ msgAlert }}
-      </BaseAlert>
-      <div class="space-y-3">
-        <input type="email" class="form-control" placeholder="Current Email" v-model.trim="guest.email" />
-        <input type="email" class="form-control" placeholder="New Email" v-model.trim="guest.new_email" />
-        <input type="password" class="form-control" placeholder="Confirm Password" v-model.trim="guest.password" />
+      <div class="bg-white rounded-lg shadow-sm overflow-hidden divide-y divide-border-light">
+        <button
+          v-for="item in listItems"
+          :key="item.label"
+          class="w-full flex items-center gap-3 px-4 py-3 hover:bg-bg transition-colors text-left"
+          @click="item.action"
+        >
+          <i :class="['icon', item.icon, 'text-darkgray']"></i>
+          <span class="text-sm">{{ item.label }}</span>
+          <span class="ml-auto bg-bg text-darkgray text-xs font-medium px-2 py-0.5 rounded-full">{{ item.count() }}</span>
+        </button>
       </div>
-      <template #footer>
-        <button class="btn btn-sm btn-success" :disabled="app.loading" @click="handleEmail">
-          {{ app.loading ? 'Updating...' : 'Update' }}
-        </button>
-      </template>
-    </BaseModal>
+    </section>
   </div>
+
+  <!-- Modals -->
+  <BaseModal v-model="showFollowing" :title="`Following (${auth.user.following.length})`" hideFooter>
+    <ListFollowing />
+  </BaseModal>
+
+  <BaseModal v-model="showFollowers" :title="`Followers (${auth.user.followers.length})`" hideFooter>
+    <ListFollowers />
+  </BaseModal>
+
+  <BaseModal v-model="showBlocked" :title="`Blocked (${auth.user.blocklist.length})`" hideFooter>
+    <ListBlocked />
+  </BaseModal>
+
+  <BaseModal v-model="showPassword" title="Change Password">
+    <BaseAlert v-if="showPasswordAlert" :show="true" variant="danger" dismissible @dismissed="showPasswordAlert = false">
+      {{ msgAlert }}
+    </BaseAlert>
+    <div class="space-y-3">
+      <input type="password" class="form-control" placeholder="Current Password" v-model="guest.old_password" />
+      <input type="password" class="form-control" placeholder="New Password" v-model="guest.password" />
+      <input type="password" class="form-control" placeholder="Confirm New Password" v-model="guest.password_confirmation" />
+    </div>
+    <template #footer>
+      <button class="btn btn-sm btn-cta" :disabled="app.loading" @click="handlePassword">
+        {{ app.loading ? 'Updating...' : 'Update Password' }}
+      </button>
+    </template>
+  </BaseModal>
+
+  <BaseModal v-model="showUsername" title="Change Username">
+    <BaseAlert v-if="showUsernameAlert" :show="true" variant="danger" dismissible @dismissed="showUsernameAlert = false">
+      {{ msgAlert }}
+    </BaseAlert>
+    <div class="space-y-2">
+      <input type="text" class="form-control" minlength="6" maxlength="20" placeholder="New username" v-model.trim="guest.username" />
+      <p class="text-xs text-darkgray">cupofthat.com/profile/{{ guest.username || '...' }}</p>
+    </div>
+    <template #footer>
+      <button class="btn btn-sm btn-cta" :disabled="app.loading" @click="handleUsername">
+        {{ app.loading ? 'Updating...' : 'Update Username' }}
+      </button>
+    </template>
+  </BaseModal>
+
+  <BaseModal v-model="showEmail" title="Change Email">
+    <BaseAlert v-if="showEmailAlert" :show="true" variant="danger" dismissible @dismissed="showEmailAlert = false">
+      {{ msgAlert }}
+    </BaseAlert>
+    <div class="space-y-3">
+      <input type="email" class="form-control" placeholder="Current Email" v-model.trim="guest.email" />
+      <input type="email" class="form-control" placeholder="New Email" v-model.trim="guest.new_email" />
+      <input type="password" class="form-control" placeholder="Confirm Password" v-model.trim="guest.password" />
+    </div>
+    <template #footer>
+      <button class="btn btn-sm btn-cta" :disabled="app.loading" @click="handleEmail">
+        {{ app.loading ? 'Updating...' : 'Update Email' }}
+      </button>
+    </template>
+  </BaseModal>
 </template>

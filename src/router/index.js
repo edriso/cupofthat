@@ -84,9 +84,11 @@ const routes = [
   {
     path: '/profile/me',
     name: 'myaccount',
-    component: () => import('@/views/Profile.vue'),
-    props: true,
-    meta: { requiresAuth: true, title: 'My Profile' },
+    redirect: () => {
+      const auth = useAuthStore()
+      return { name: 'profile', params: { username: auth.user.username } }
+    },
+    meta: { requiresAuth: true },
   },
   {
     path: '/profile/:username',

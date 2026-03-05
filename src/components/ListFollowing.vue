@@ -28,21 +28,31 @@ function handleFollow() {
 
 <template>
   <div>
-    <ul>
-      <li v-for="follow in auth.user.following" :key="follow.id" class="flex items-center justify-between py-2 border-b last:border-b-0">
-        <router-link :to="{ name: 'profile', params: { username: follow.username } }" class="flex items-center gap-3 hover:opacity-80">
-          <img :src="getProfileImage(follow)" class="w-8 h-8 rounded-full object-cover" />
-          <span>{{ follow.name }}</span>
+    <p v-if="!auth.user.following.length" class="text-sm text-darkgray text-center py-4">You're not following anyone yet.</p>
+
+    <ul class="divide-y divide-border-light">
+      <li v-for="follow in auth.user.following" :key="follow.id" class="flex items-center gap-3 py-3">
+        <router-link :to="{ name: 'profile', params: { username: follow.username } }" class="flex items-center gap-3 flex-1 min-w-0 hover:opacity-80">
+          <img :src="getProfileImage(follow)" class="w-10 h-10 rounded-full object-cover shrink-0" />
+          <div class="min-w-0">
+            <p class="text-sm font-medium truncate">{{ follow.name }}</p>
+            <p class="text-xs text-darkgray truncate">@{{ follow.username }}</p>
+          </div>
         </router-link>
-        <span class="icon icon-ok-circled text-green cursor-pointer" @click="handleRemove(follow)"></span>
+        <button
+          class="btn btn-sm btn-white text-react text-xs shrink-0"
+          @click="handleRemove(follow)"
+        >
+          Unfollow
+        </button>
       </li>
     </ul>
 
     <BaseModal v-model="showConfirm" size="sm">
-      <p v-if="selectedUser">Remove {{ selectedUser.name }}?</p>
+      <p v-if="selectedUser">Unfollow <strong>{{ selectedUser.name }}</strong>?</p>
       <template #footer>
-        <button class="btn btn-sm" @click="showConfirm = false">cancel</button>
-        <button class="btn btn-sm btn-pink ml-2" @click="handleFollow">Yes</button>
+        <button class="btn btn-sm btn-light" @click="showConfirm = false">Cancel</button>
+        <button class="btn btn-sm btn-pink ml-2" @click="handleFollow">Unfollow</button>
       </template>
     </BaseModal>
   </div>
