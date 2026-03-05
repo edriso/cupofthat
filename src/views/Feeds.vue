@@ -34,7 +34,7 @@ onMounted(() => {
     <div class="max-w-xl mx-auto">
       <MakePost v-if="auth.hasNotPostedToday" />
 
-      <div class="flex justify-center gap-2 mb-5">
+      <div class="flex justify-center gap-2 my-5">
         <button
           class="btn btn-sm rounded-full px-5 transition-all"
           :class="sortBy === 'global' ? 'btn-cta shadow' : 'btn-white hover:shadow'"
