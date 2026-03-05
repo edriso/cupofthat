@@ -26,9 +26,13 @@ export const usePostStore = defineStore('post', () => {
   }
 
   async function updatePost(request) {
-    const found = MOCK_POSTS.find((p) => p.id === request?.id) || MOCK_POSTS[0]
-    post.value = createPost(found)
-    return { data: { post: found } }
+    const id = request instanceof FormData ? Number(request.get('id')) : request?.id
+    const content = request instanceof FormData ? request.get('content') : request?.content
+    const tag = request instanceof FormData ? request.get('tag') : request?.tag
+    const found = MOCK_POSTS.find((p) => p.id === id) || MOCK_POSTS[0]
+    const updated = { ...found, content: content || found.content, tag: tag || found.tag }
+    post.value = createPost(updated)
+    return { data: { post: updated } }
   }
 
   async function postLike() {

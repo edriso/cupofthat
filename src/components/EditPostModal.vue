@@ -1,8 +1,6 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref, watch } from 'vue'
 import { usePostStore } from '@/stores/post'
-import { useUsersStore } from '@/stores/users'
 import { useAppStore } from '@/stores/app'
 import BaseModal from '@/components/ui/BaseModal.vue'
 import BaseFileInput from '@/components/ui/BaseFileInput.vue'
@@ -18,9 +16,7 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue', 'postUpdated'])
 
-const route = useRoute()
 const postStore = usePostStore()
-const usersStore = useUsersStore()
 const app = useAppStore()
 
 const maxLetters = 220
@@ -28,8 +24,12 @@ const editContent = ref('')
 const postImage = ref(null)
 const errorMsg = ref('')
 
-onMounted(() => {
-  editContent.value = props.postContent
+watch(() => props.modelValue, (val) => {
+  if (val) {
+    editContent.value = props.postContent
+    postImage.value = null
+    errorMsg.value = ''
+  }
 })
 
 async function handlePostUpdate() {
@@ -38,16 +38,11 @@ async function handlePostUpdate() {
 
   try {
     const res = await postStore.updatePost(props.post.request ? props.post.request() : props.post)
-    if (route.params.username) {
-      usersStore.fetchUserPosts(route.params.username)
-    } else if (route.params.postId || route.name === 'calendar') {
-      const updatedPost = res.data.post
-      props.post.content = updatedPost.content
-      props.post.image = updatedPost.image
-      emit('postUpdated', updatedPost)
-    } else {
-      postStore.fetchPosts()
-    }
+    const updatedPost = res.data.post
+    props.post.content = updatedPost.content
+    if (updatedPost.image !== undefined) props.post.image = updatedPost.image
+    if (updatedPost.tag !== undefined) props.post.tag = updatedPost.tag
+    emit('postUpdated', updatedPost)
     emit('update:modelValue', false)
   } catch (err) {
     errorMsg.value = err?.response?.data?.message || 'Update failed'

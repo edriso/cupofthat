@@ -87,12 +87,16 @@ function dayClicked(day) {
     selectedPost.value = {}
   } else {
     selectedDay.value = day.date
-    selectedPost.value = createPost({
-      id: 1,
-      content: `Post from ${day.date}`,
-      created_at: day.date,
-      owner: auth.user,
-    })
+    const calEntry = usersStore.userCalendar.find((c) => c.date === day.date)
+    if (calEntry?.post) {
+      selectedPost.value = createPost(calEntry.post)
+    } else {
+      selectedPost.value = createPost({
+        content: `Post from ${day.date}`,
+        created_at: day.date,
+        owner: auth.user,
+      })
+    }
   }
 }
 

@@ -104,23 +104,28 @@ export const MOCK_POSTS = [
 export const MOCK_CALENDAR = [
   {
     date: new Date(Date.now() - 86400 * 1000).toISOString().slice(0, 10),
-    count: 2
+    count: 2,
+    post: MOCK_POSTS[2]
   },
   {
     date: new Date(Date.now() - 86400 * 2000).toISOString().slice(0, 10),
-    count: 1
+    count: 1,
+    post: MOCK_POSTS[0]
   },
   {
     date: new Date(Date.now() - 86400 * 4000).toISOString().slice(0, 10),
-    count: 1
+    count: 1,
+    post: { id: 4, content: "Read a chapter of a great book today.", tags: "reading", tag: "reading", image: null, newImage: null, owner: MOCK_USER, created_at: new Date(Date.now() - 86400 * 4000).toISOString(), liked: false, likesCount: 2 }
   },
   {
     date: new Date(Date.now() - 86400 * 7000).toISOString().slice(0, 10),
-    count: 3
+    count: 3,
+    post: { id: 5, content: "Practiced guitar for 15 minutes.", tags: "music", tag: "music", image: null, newImage: null, owner: MOCK_USER, created_at: new Date(Date.now() - 86400 * 7000).toISOString(), liked: true, likesCount: 4 }
   },
   {
     date: new Date(Date.now() - 86400 * 10000).toISOString().slice(0, 10),
-    count: 1
+    count: 1,
+    post: { id: 6, content: "Wrote a short journal entry this morning.", tags: "writing", tag: "writing", image: null, newImage: null, owner: MOCK_USER, created_at: new Date(Date.now() - 86400 * 10000).toISOString(), liked: false, likesCount: 1 }
   }
 ];
 
