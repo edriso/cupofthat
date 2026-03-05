@@ -94,7 +94,7 @@ const handleLogin = handleSubmit(async (values) => {
           Forgot Password?
         </router-link>
         <router-link :to="{ name: 'signup' }" class="text-sm gray-text">
-          New?<span class="text-nav font-medium"> Sign Up!</span>
+          New?<span class="text-white font-medium"> Sign Up!</span>
         </router-link>
       </div>
     </template>
@@ -103,7 +103,7 @@ const handleLogin = handleSubmit(async (values) => {
       <h6 class="text-center text-sm mt-2">
         <router-link :to="{ name: 'about' }" class="gray-text">About Us</router-link>
       </h6>
-      <p v-if="photographer" class="text-center text-xs text-gray mt-1">
+      <p v-if="photographer" class="fixed bottom-2 right-3 text-xs text-white/40">
         Photo by {{ photographer }}
       </p>
     </template>

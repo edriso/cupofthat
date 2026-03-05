@@ -49,6 +49,12 @@ const handleRegister = handleSubmit(async (values) => {
 
 <template>
   <LoginTemplate>
+    <template #header>
+      <p class="text-center text-white mb-2">
+        &ldquo;Join us and start your learning journey!&rdquo;
+      </p>
+    </template>
+
     <template #default>
       <BaseAlert v-if="alertMsg" :show="showAlert" variant="danger">
         <p>{{ alertMsg }}</p>
@@ -78,13 +84,21 @@ const handleRegister = handleSubmit(async (values) => {
           <input class="form-control" type="password" v-model="password_confirmation" placeholder="Confirm Password" />
           <p v-if="errors.password_confirmation" class="invalid-feedback">{{ errors.password_confirmation }}</p>
         </div>
-        <button class="btn btn-success btn-block" type="submit" :disabled="app.loading">
+        <button class="btn btn-cta btn-block" type="submit" :disabled="app.loading">
           {{ app.loading ? 'Signing you up...' : 'Sign Up' }}
         </button>
       </form>
       <div class="text-center mt-2 pt-1">
-        <router-link :to="{ name: 'login' }" class="gray-text text-sm">Login</router-link>
+        <router-link :to="{ name: 'login' }" class="gray-text text-sm">
+          Already have an account? <span class="text-white">Login</span>
+        </router-link>
       </div>
+    </template>
+
+    <template #footer>
+      <h6 class="text-center text-sm mt-2">
+        <router-link :to="{ name: 'about' }" class="gray-text">About Us</router-link>
+      </h6>
     </template>
   </LoginTemplate>
 </template>

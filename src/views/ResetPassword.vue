@@ -48,7 +48,7 @@ async function handleSubmit() {
       </BaseAlert>
       <form @submit.prevent="handleSubmit">
         <div class="mb-3">
-          <p class="text-darkgray"><span>{{ auth.guest.email }}</span></p>
+          <p class="text-white/80"><span>{{ auth.guest.email }}</span></p>
         </div>
         <div class="mb-3">
           <input class="form-control" type="text" v-model.lazy="auth.guest.verification_code" placeholder="Verification Code" maxlength="8" autocomplete="off" />
@@ -59,13 +59,21 @@ async function handleSubmit() {
         <div class="mb-3">
           <input class="form-control" type="password" v-model.lazy="auth.guest.password_confirmation" placeholder="Confirm Password" autocomplete="off" />
         </div>
-        <button class="btn btn-success btn-block" type="submit">
-          {{ app.loading ? 'Resetting...' : 'Reset' }}
+        <button class="btn btn-cta btn-block" type="submit">
+          {{ app.loading ? 'Resetting...' : 'Reset Password' }}
         </button>
       </form>
-      <div class="text-center mt-2">
-        <router-link :to="{ name: 'login' }" class="gray-text text-sm">Cancel</router-link>
+      <div class="text-center mt-2 pt-1">
+        <router-link :to="{ name: 'login' }" class="gray-text text-sm">
+          Back to <span class="text-white">Login</span>
+        </router-link>
       </div>
+    </template>
+
+    <template #footer>
+      <h6 class="text-center text-sm mt-2">
+        <router-link :to="{ name: 'about' }" class="gray-text">About Us</router-link>
+      </h6>
     </template>
   </LoginTemplate>
 </template>
