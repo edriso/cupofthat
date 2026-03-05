@@ -28,7 +28,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="container mx-auto px-4 pt-20 pb-8">
+  <main class="page-container">
     <div class="max-w-xl mx-auto">
       <div v-if="postStore.postOwner.username">
         <Post

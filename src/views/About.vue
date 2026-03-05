@@ -51,7 +51,7 @@ async function handleFeedback() {
       </div>
     </nav>
 
-    <div class="container mx-auto px-4 pt-20 pb-8">
+    <div class="page-container">
       <div class="max-w-2xl mx-auto text-center mb-8">
         <h4 class="text-xl font-bold">About Us</h4>
         <h5 class="text-lg font-bold mt-2">We Share One Little Achievement Every Day!</h5>

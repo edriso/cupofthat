@@ -25,7 +25,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="container mx-auto px-4 pt-20 pb-8">
+  <main class="page-container">
     <div class="max-w-xl mx-auto">
       <img :src="selectedBootcamp.img" :alt="selectedBootcamp.name" class="w-full rounded-lg shadow mb-4" />
       <h3 class="text-2xl font-bold">{{ selectedBootcamp.name }}</h3>

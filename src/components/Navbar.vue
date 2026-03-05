@@ -47,7 +47,7 @@ function logout() {
 <template>
   <nav
     v-if="auth.user"
-    class="fixed top-0 left-0 right-0 z-40 bg-nav text-white h-[4.375rem] flex items-center px-4 shadow-md"
+    class="fixed top-0 left-0 right-0 z-40 bg-nav text-white h-[var(--spacing-navbar)] flex items-center px-4 shadow-md"
   >
     <router-link :to="{ name: 'feeds' }" class="flex items-center gap-2 hover:opacity-90 transition-opacity">
       <img :src="logoSvg" class="h-8" alt="logo" />
@@ -131,7 +131,7 @@ function logout() {
     >
       <div
         v-if="mobileOpen"
-        class="md:hidden fixed top-[4.375rem] left-0 right-0 z-40 bg-nav shadow-xl"
+        class="md:hidden fixed top-[var(--spacing-navbar)] left-0 right-0 z-40 bg-nav shadow-xl"
       >
         <!-- Profile card -->
         <div class="flex items-center gap-3 px-5 py-4 border-b border-white/10">

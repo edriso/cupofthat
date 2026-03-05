@@ -6,7 +6,7 @@ import SettingsAccount from '@/components/SettingsAccount.vue'
 </script>
 
 <template>
-  <main class="container mx-auto px-4 pt-20 pb-8">
+  <main class="page-container">
     <BaseTabs>
       <BaseTab title="Profile" active>
         <SettingsProfile />
