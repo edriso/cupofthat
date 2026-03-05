@@ -1,4 +1,14 @@
-export const MOCK_TOKEN = "mock-jwt-token-cupofthat";
+const DAY = 86400 * 1000
+
+function daysAgo(n) {
+  return new Date(Date.now() - DAY * n).toISOString()
+}
+
+function dateOnly(n) {
+  return new Date(Date.now() - DAY * n).toISOString().slice(0, 10)
+}
+
+export const MOCK_TOKEN = "mock-jwt-token-cupofthat"
 
 export const MOCK_USER = {
   id: 1,
@@ -7,28 +17,25 @@ export const MOCK_USER = {
   username: "janedoe",
   craft: "Designer",
   about: "Coffee enthusiast & creative thinker.",
+  bio: "Coffee enthusiast & creative thinker.",
   email: "jane@example.com",
   birthday: "1995-06-15",
   password: "",
   images: [
     { type: "user_profiles", image: "https://i.pravatar.cc/200?u=janedoe" },
-    { type: "user_covers", image: "https://picsum.photos/seed/cover1/1200/400" }
+    { type: "user_covers", image: "https://picsum.photos/seed/cover1/1200/400" },
   ],
   postsCount: 5,
   activeDays: 42,
-  followers: [{ id: 2, username: "johndoe" }],
-  following: [{ id: 2, username: "johndoe" }],
+  followers: [{ id: 2, username: "johndoe", name: "John Doe" }],
+  following: [{ id: 2, username: "johndoe", name: "John Doe" }],
   blocklist: [],
   calendar_start: 1,
+  calendar_display: "month",
   is_verified: true,
-  last_post_date: "",
-  socials: {
-    facebook: "",
-    twitter: "",
-    linkedin: "",
-    website: ""
-  }
-};
+  last_post_date: daysAgo(1),
+  socials: { website: "" },
+}
 
 export const MOCK_OTHER_USER = {
   id: 2,
@@ -37,28 +44,25 @@ export const MOCK_OTHER_USER = {
   username: "johndoe",
   craft: "Developer",
   about: "Building things one cup at a time.",
+  bio: "Building things one cup at a time.",
   email: "john@example.com",
   birthday: "1992-03-20",
   password: "",
   images: [
     { type: "user_profiles", image: "https://i.pravatar.cc/200?u=johndoe" },
-    { type: "user_covers", image: "https://picsum.photos/seed/cover2/1200/400" }
+    { type: "user_covers", image: "https://picsum.photos/seed/cover2/1200/400" },
   ],
   postsCount: 3,
   activeDays: 28,
-  followers: [{ id: 1, username: "janedoe" }],
-  following: [{ id: 1, username: "janedoe" }],
+  followers: [{ id: 1, username: "janedoe", name: "Jane Doe" }],
+  following: [{ id: 1, username: "janedoe", name: "Jane Doe" }],
   blocklist: [],
   calendar_start: 1,
+  calendar_display: "month",
   is_verified: true,
-  last_post_date: "",
-  socials: {
-    facebook: "",
-    twitter: "",
-    linkedin: "",
-    website: ""
-  }
-};
+  last_post_date: daysAgo(0),
+  socials: { website: "" },
+}
 
 export const MOCK_POSTS = [
   {
@@ -69,9 +73,9 @@ export const MOCK_POSTS = [
     image: "https://picsum.photos/seed/post1/600/400",
     newImage: null,
     owner: MOCK_USER,
-    created_at: new Date(Date.now() - 86400 * 2000).toISOString(),
+    created_at: daysAgo(1),
     liked: false,
-    likesCount: 12
+    likesCount: 12,
   },
   {
     id: 2,
@@ -81,9 +85,9 @@ export const MOCK_POSTS = [
     image: "https://picsum.photos/seed/post2/600/400",
     newImage: null,
     owner: MOCK_OTHER_USER,
-    created_at: new Date(Date.now() - 7200 * 1000).toISOString(),
+    created_at: daysAgo(0),
     liked: true,
-    likesCount: 8
+    likesCount: 8,
   },
   {
     id: 3,
@@ -93,42 +97,46 @@ export const MOCK_POSTS = [
     image: null,
     newImage: null,
     owner: MOCK_USER,
-    created_at: new Date(Date.now() - 86400 * 1000).toISOString(),
+    created_at: daysAgo(2),
     liked: false,
-    likesCount: 5
-  }
-];
+    likesCount: 5,
+  },
+]
 
 export const MOCK_CALENDAR = [
+  { date: dateOnly(0), count: 1, post: MOCK_POSTS[1] },
+  { date: dateOnly(1), count: 1, post: MOCK_POSTS[0] },
+  { date: dateOnly(2), count: 1, post: MOCK_POSTS[2] },
   {
-    date: new Date(Date.now() - 86400 * 1000).toISOString().slice(0, 10),
-    count: 2,
-    post: MOCK_POSTS[2]
-  },
-  {
-    date: new Date(Date.now() - 86400 * 2000).toISOString().slice(0, 10),
+    date: dateOnly(4),
     count: 1,
-    post: MOCK_POSTS[0]
+    post: { id: 4, content: "Read a chapter of a great book today.", tag: "reading", image: null, owner: MOCK_USER, created_at: daysAgo(4), liked: false, likesCount: 2 },
   },
   {
-    date: new Date(Date.now() - 86400 * 4000).toISOString().slice(0, 10),
+    date: dateOnly(6),
     count: 1,
-    post: { id: 4, content: "Read a chapter of a great book today.", tags: "reading", tag: "reading", image: null, newImage: null, owner: MOCK_USER, created_at: new Date(Date.now() - 86400 * 4000).toISOString(), liked: false, likesCount: 2 }
+    post: { id: 5, content: "Practiced guitar for 15 minutes.", tag: "music", image: null, owner: MOCK_USER, created_at: daysAgo(6), liked: true, likesCount: 4 },
   },
   {
-    date: new Date(Date.now() - 86400 * 7000).toISOString().slice(0, 10),
-    count: 3,
-    post: { id: 5, content: "Practiced guitar for 15 minutes.", tags: "music", tag: "music", image: null, newImage: null, owner: MOCK_USER, created_at: new Date(Date.now() - 86400 * 7000).toISOString(), liked: true, likesCount: 4 }
-  },
-  {
-    date: new Date(Date.now() - 86400 * 10000).toISOString().slice(0, 10),
+    date: dateOnly(9),
     count: 1,
-    post: { id: 6, content: "Wrote a short journal entry this morning.", tags: "writing", tag: "writing", image: null, newImage: null, owner: MOCK_USER, created_at: new Date(Date.now() - 86400 * 10000).toISOString(), liked: false, likesCount: 1 }
-  }
-];
+    post: { id: 6, content: "Wrote a short journal entry this morning.", tag: "writing", image: null, owner: MOCK_USER, created_at: daysAgo(9), liked: false, likesCount: 1 },
+  },
+  {
+    date: dateOnly(12),
+    count: 1,
+    post: { id: 7, content: "Tried a new recipe. Turned out amazing!", tag: "cooking", image: null, owner: MOCK_USER, created_at: daysAgo(12), liked: true, likesCount: 7 },
+  },
+  {
+    date: dateOnly(15),
+    count: 1,
+    post: { id: 8, content: "Deep work session on the side project.", tag: "coding", image: null, owner: MOCK_USER, created_at: daysAgo(15), liked: false, likesCount: 3 },
+  },
+]
 
 export const MOCK_BADGE = {
   name: "Early Adopter",
   description: "One of the first members of the community",
-  icon: "star"
-};
+  icon: "star",
+  value: 42,
+}
