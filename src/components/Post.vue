@@ -101,7 +101,7 @@ onMounted(() => {
         {{ expanded ? 'Show less' : 'Read more' }}
       </button>
 
-      <span v-if="post.tag" class="inline-block text-xs text-cyan font-medium bg-cyan/10 px-2.5 py-0.5 rounded-full mb-3">
+      <span v-if="post.tag" class="inline-block text-xs text-nav font-medium bg-nav/10 px-2.5 py-0.5 rounded-full mb-3">
         #{{ post.tag }}
       </span>
 

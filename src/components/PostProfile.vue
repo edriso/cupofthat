@@ -79,7 +79,7 @@ onMounted(() => {
       </button>
 
       <div v-if="post.tag || !hideDate" class="flex items-center gap-2 mt-2">
-        <span v-if="post.tag" class="inline-block text-xs text-cyan font-medium bg-cyan/10 px-2.5 py-0.5 rounded-full">
+        <span v-if="post.tag" class="inline-block text-xs text-nav font-medium bg-nav/10 px-2.5 py-0.5 rounded-full">
           #{{ post.tag }}
         </span>
         <router-link
