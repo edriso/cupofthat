@@ -77,7 +77,7 @@ function logout() {
       </router-link>
 
       <router-link
-        :to="{ name: 'profile', params: { username: auth.user.username } }"
+        :to="{ name: 'myaccount' }"
         class="md:hidden hover:text-cyan transition-colors flex items-center gap-2 py-1"
       >
         <i class="icon icon-user"></i> Profile
@@ -122,7 +122,7 @@ function logout() {
       </div>
 
       <router-link
-        :to="{ name: 'profile', params: { username: auth.user.username } }"
+        :to="{ name: 'myaccount' }"
         class="hidden md:block"
       >
         <img

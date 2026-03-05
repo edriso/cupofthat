@@ -44,7 +44,7 @@ function close() {
           <div v-if="!hideHeader" class="flex items-center justify-between px-5 py-4 border-b border-gray-100">
             <h5 class="text-lg font-semibold">{{ title }}</h5>
             <button
-              class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
+              class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors cursor-pointer"
               @click="close"
             >
               <i class="icon icon-cancel-circled"></i>

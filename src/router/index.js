@@ -33,7 +33,7 @@ const routes = [
     props: true,
     meta: { requiresAuth: true, title: 'Bootcamp' },
   },
-{
+  {
     path: '/settings',
     name: 'settings',
     component: () => import('@/views/Settings.vue'),
@@ -49,16 +49,16 @@ const routes = [
     path: '/signup',
     name: 'signup',
     component: () => import('@/views/Signup.vue'),
-    meta: { guestOnly: true, title: 'Signup' },
+    meta: { guestOnly: true, title: 'Sign Up' },
   },
   {
-    path: '/forgotPassword',
+    path: '/forgot-password',
     name: 'forgotPassword',
     component: () => import('@/views/ForgotPassword.vue'),
     meta: { guestOnly: true, title: 'Forgot Password' },
   },
   {
-    path: '/resetPassword',
+    path: '/reset-password',
     name: 'resetPassword',
     component: () => import('@/views/ResetPassword.vue'),
     meta: { guestOnly: true, title: 'Reset Password' },
@@ -67,7 +67,7 @@ const routes = [
     path: '/verify',
     name: 'verify',
     component: () => import('@/views/Verify.vue'),
-    meta: { guestOnly: true, title: 'Please verify your email address' },
+    meta: { guestOnly: true, title: 'Verify Email' },
   },
   {
     path: '/about',
@@ -79,27 +79,27 @@ const routes = [
     path: '/hello',
     name: 'landing',
     component: () => import('@/views/Landing.vue'),
-    meta: { guestOnly: true, title: 'Join us' },
+    meta: { guestOnly: true, title: 'Join Us' },
   },
   {
-    path: '/account/me',
+    path: '/profile/me',
     name: 'myaccount',
     component: () => import('@/views/Profile.vue'),
     props: true,
-    meta: { requiresAuth: true, title: 'User profile' },
+    meta: { requiresAuth: true, title: 'My Profile' },
   },
   {
-    path: '/:username',
+    path: '/profile/:username',
     name: 'profile',
     component: () => import('@/views/Profile.vue'),
     props: true,
-    meta: { requiresAuth: true, title: 'User profile' },
+    meta: { requiresAuth: true, title: 'Profile' },
   },
   {
     path: '/:pathMatch(.*)*',
     name: 'notFound',
     component: () => import('@/views/NotFound.vue'),
-    meta: { requiresAuth: true, title: 'Page not found' },
+    meta: { title: 'Page Not Found' },
   },
 ]
 
@@ -112,7 +112,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
-  document.title = `CUP OF THAT | ${to.meta.title || ''}`
+  document.title = `Cup Of That | ${to.meta.title || ''}`
 
   const auth = useAuthStore()
 

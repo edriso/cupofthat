@@ -60,25 +60,23 @@ async function handlePostUpdate() {
     :modelValue="modelValue"
     @update:modelValue="emit('update:modelValue', $event)"
     title="Edit Post"
-    hideBackdrop
   >
     <BaseAlert v-if="errorMsg" :show="true" variant="danger">{{ errorMsg }}</BaseAlert>
     <form :id="`post${postId}-form`" @submit.prevent="handlePostUpdate">
       <textarea
-        class="form-control"
+        class="form-control resize-none"
         :maxlength="maxLetters"
-        rows="5"
+        rows="4"
         v-model="editContent"
         required
       ></textarea>
-      <p v-if="editContent.length > maxLetters - 40" class="text-right text-gray-500 text-sm mt-1">
-        {{ editContent.length }} letters
+      <p v-if="editContent.length > maxLetters - 40" class="text-right text-sm mt-1" :class="editContent.length > maxLetters - 10 ? 'text-react' : 'text-gray-400'">
+        {{ editContent.length }}/{{ maxLetters }}
       </p>
-      <div class="mt-2">
+      <div class="mt-3">
         <BaseFileInput
           accept="image/jpeg, image/png, image/gif"
-          placeholder="Choose a new photo?"
-          size="sm"
+          placeholder="Change photo"
           v-model="postImage"
         />
       </div>
@@ -86,8 +84,8 @@ async function handlePostUpdate() {
 
     <template #footer>
       <div class="flex justify-between items-center w-full">
-        <input type="text" class="form-control w-1/4 text-sm" maxlength="30" placeholder="Tag" v-model.trim="post.tag" />
-        <button :disabled="app.loading" class="btn btn-sm btn-success" type="submit" :form="`post${postId}-form`">
+        <input type="text" class="form-control w-32 text-sm" maxlength="30" placeholder="# Tag" v-model.trim="post.tag" />
+        <button :disabled="app.loading" class="btn btn-sm btn-cta cursor-pointer" type="submit" :form="`post${postId}-form`">
           {{ app.loading ? 'Updating...' : 'Update' }}
         </button>
       </div>
