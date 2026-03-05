@@ -34,9 +34,15 @@ const filteredBootcamps = computed(() =>
           </li>
         </ul>
       </div>
-      <div v-else class="text-center mt-8">
-        <h2 class="text-4xl font-bold mb-4">Coming soon!</h2>
-        <router-link :to="{ name: 'feeds' }" class="btn btn-sm btn-success">Back to Feeds</router-link>
+      <div v-else class="text-center py-16">
+        <div class="w-20 h-20 rounded-full bg-cyan/10 flex items-center justify-center mx-auto mb-5">
+          <i class="icon icon-cup text-cyan text-3xl"></i>
+        </div>
+        <h2 class="text-2xl font-bold text-nav mb-2">Bootcamps Coming Soon</h2>
+        <p class="text-darkgray max-w-sm mx-auto mb-6">
+          We're brewing something great. Structured learning paths to level up your skills — stay tuned!
+        </p>
+        <router-link :to="{ name: 'feeds' }" class="btn btn-cta">Back to Feeds</router-link>
       </div>
     </div>
   </main>
