@@ -55,10 +55,10 @@ onBeforeUnmount(() => {
     <slot></slot>
     <button
       v-if="dismissible"
-      class="absolute top-2 right-3 text-lg leading-none opacity-60 hover:opacity-100"
+      class="absolute top-2.5 right-3 opacity-60 hover:opacity-100 transition-opacity"
       @click="dismiss"
     >
-      &times;
+      <i class="icon icon-cancel-circled"></i>
     </button>
   </div>
 </template>

@@ -25,7 +25,7 @@ function handleChange(e) {
       fileName ? 'border-cyan/40 bg-cyan/5 text-cyan' : '',
     ]"
   >
-    <i class="icon" :class="fileName ? 'icon-ok' : 'icon-plus-circled'"></i>
+    <i class="icon" :class="fileName ? 'icon-ok-circled' : 'icon-plus-circled'"></i>
     <span class="truncate">{{ fileName || placeholder }}</span>
     <input type="file" :accept="accept" class="hidden" @change="handleChange" />
   </label>
