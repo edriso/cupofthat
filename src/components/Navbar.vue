@@ -57,7 +57,7 @@ function logout() {
       Good {{ time }}, {{ auth.user.firstname }}!
     </span>
 
-    <button class="md:hidden ml-auto text-white text-2xl p-1" @click="mobileOpen = !mobileOpen">
+    <button class="md:hidden ml-auto text-white text-2xl p-1 cursor-pointer" @click="mobileOpen = !mobileOpen">
       <i :class="mobileOpen ? 'icon icon-cancel-circled' : 'icon icon-dot-3'"></i>
     </button>
 
@@ -71,36 +71,28 @@ function logout() {
     >
       <router-link
         :to="{ name: 'feeds' }"
-        class="md:hidden hover:text-yellow transition-colors flex items-center gap-2 py-1"
+        class="md:hidden hover:text-cyan transition-colors flex items-center gap-2 py-1"
       >
         <i class="icon icon-newspaper"></i> Feeds
       </router-link>
 
       <router-link
         :to="{ name: 'profile', params: { username: auth.user.username } }"
-        class="md:hidden hover:text-yellow transition-colors flex items-center gap-2 py-1"
+        class="md:hidden hover:text-cyan transition-colors flex items-center gap-2 py-1"
       >
         <i class="icon icon-user"></i> Profile
       </router-link>
 
       <router-link
-        :to="{ name: 'search' }"
-        class="hover:text-yellow transition-colors flex items-center gap-2 py-1"
-      >
-        <i class="icon icon-search"></i>
-        <span class="md:hidden">Search</span>
-      </router-link>
-
-      <router-link
         :to="{ name: 'calendar' }"
-        class="hover:text-yellow transition-colors flex items-center gap-2 py-1"
+        class="hover:text-cyan transition-colors flex items-center gap-2 py-1"
       >
         <i class="icon icon-calendar"></i>
         <span class="md:hidden">Calendar</span>
       </router-link>
 
       <div ref="dropdownRef" class="relative">
-        <button @click="dropdownOpen = !dropdownOpen" class="hover:text-yellow transition-colors p-1">
+        <button @click="dropdownOpen = !dropdownOpen" class="hover:text-cyan transition-colors p-1 cursor-pointer">
           <i class="icon icon-dot-3"></i>
         </button>
         <Transition
@@ -122,7 +114,7 @@ function logout() {
               <i class="icon icon-info"></i> About
             </router-link>
             <hr class="my-1" />
-            <button class="flex items-center gap-2 w-full text-left px-4 py-2.5 hover:bg-gray-50 text-sm text-react" @click="logout">
+            <button class="flex items-center gap-2 w-full text-left px-4 py-2.5 hover:bg-gray-50 text-sm text-react cursor-pointer" @click="logout">
               <i class="icon icon-logout"></i> Logout
             </button>
           </div>
@@ -135,7 +127,7 @@ function logout() {
       >
         <img
           :src="getProfileImage(auth.user)"
-          class="w-8 h-8 rounded-full object-cover ring-2 ring-white/30 hover:ring-yellow transition-all"
+          class="w-8 h-8 rounded-full object-cover ring-2 ring-white/30 hover:ring-cyan transition-all"
           :alt="auth.user.username + ' profile'"
         />
       </router-link>

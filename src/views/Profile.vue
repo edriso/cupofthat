@@ -133,15 +133,15 @@ onMounted(() => setUserProfile())
               <template #button-content>
                 <i class="icon icon-dot-3"></i>
               </template>
-              <button class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm" @click="changeProfile?.openPicker()">
+              <button class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm cursor-pointer" @click="changeProfile?.openPicker()">
                 Change profile picture
               </button>
               <hr class="my-1" />
-              <button class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm" @click="changeCover?.openPicker()">
+              <button class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm cursor-pointer" @click="changeCover?.openPicker()">
                 Change cover photo
               </button>
               <hr class="my-1" />
-              <router-link :to="{ name: 'settings' }" class="block px-4 py-2 hover:bg-gray-100 text-sm">
+              <router-link :to="{ name: 'settings' }" class="block px-4 py-2 hover:bg-gray-50 text-sm">
                 Edit profile
               </router-link>
             </BaseDropdown>
@@ -154,7 +154,7 @@ onMounted(() => setUserProfile())
 
           <h3 class="text-xl font-bold mt-2">
             {{ usersStore.author.name }}
-            <span v-if="usersStore.userBadge && myProfile" class="text-yellow" :title="`Active for ${usersStore.userBadge.value || ''} days`">
+            <span v-if="usersStore.userBadge && myProfile" class="text-cyan" :title="`Active for ${usersStore.userBadge.value || ''} days`">
               <i :class="'icon icon-' + usersStore.userBadge.icon"></i>
             </span>
           </h3>
@@ -162,7 +162,7 @@ onMounted(() => setUserProfile())
           <p class="text-gray-500">{{ usersStore.author.craft }}</p>
 
           <p class="mt-1">
-            <span class="inline-flex items-center gap-1 bg-yellow/20 text-yellow px-2 py-0.5 rounded-full text-sm font-medium">
+            <span class="inline-flex items-center gap-1 bg-nav/10 text-nav px-2 py-0.5 rounded-full text-sm font-medium">
               <i class="icon icon-cup"></i> {{ usersStore.author.postsCount }}
             </span>
           </p>

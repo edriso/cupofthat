@@ -81,10 +81,10 @@ onMounted(() => {
           <template #button-content>
             <i class="icon icon-dot-3 text-gray-400"></i>
           </template>
-          <button v-if="isUserPostOwner" class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm" @click="showEdit = true">
+          <button v-if="isUserPostOwner" class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm cursor-pointer" @click="showEdit = true">
             Edit Post
           </button>
-          <button v-else class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm" @click="emit('report')">
+          <button v-else class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm cursor-pointer" @click="emit('report')">
             Report Abuse
           </button>
         </BaseDropdown>
@@ -101,13 +101,13 @@ onMounted(() => {
         {{ expanded ? 'Show less' : 'Read more' }}
       </button>
 
-      <p v-if="post.tag" class="text-xs text-cyan font-medium mb-3">
+      <span v-if="post.tag" class="inline-block text-xs text-cyan font-medium bg-cyan/10 px-2.5 py-0.5 rounded-full mb-3">
         #{{ post.tag }}
-      </p>
+      </span>
 
       <div class="flex items-center pt-2 border-t border-gray-100">
         <button
-          class="flex items-center gap-1.5 transition-colors text-sm"
+          class="flex items-center gap-1.5 transition-colors text-sm cursor-pointer"
           :class="post.liked ? 'text-react' : 'text-gray-400 hover:text-react'"
           @click="handlePostLikes"
         >

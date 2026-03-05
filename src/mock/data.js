@@ -71,7 +71,7 @@ export const MOCK_POSTS = [
     image: "https://picsum.photos/seed/post1/600/400",
     newImage: null,
     owner: MOCK_USER,
-    created_at: new Date(Date.now() - 3600 * 1000).toISOString(),
+    created_at: new Date(Date.now() - 86400 * 2000).toISOString(),
     liked: false,
     likesCount: 12
   },
@@ -102,13 +102,24 @@ export const MOCK_POSTS = [
 ];
 
 export const MOCK_CALENDAR = [
-  { date: new Date().toISOString().slice(0, 10), count: 1 },
   {
     date: new Date(Date.now() - 86400 * 1000).toISOString().slice(0, 10),
     count: 2
   },
   {
     date: new Date(Date.now() - 86400 * 2000).toISOString().slice(0, 10),
+    count: 1
+  },
+  {
+    date: new Date(Date.now() - 86400 * 4000).toISOString().slice(0, 10),
+    count: 1
+  },
+  {
+    date: new Date(Date.now() - 86400 * 7000).toISOString().slice(0, 10),
+    count: 3
+  },
+  {
+    date: new Date(Date.now() - 86400 * 10000).toISOString().slice(0, 10),
     count: 1
   }
 ];

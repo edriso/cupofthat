@@ -80,11 +80,11 @@
   width: 100%;
 }
 
-@utility btn-yellow {
-  background-color: var(--color-yellow);
+@utility btn-cta {
+  background-color: var(--color-nav);
   color: #fff;
   &:hover {
-    background-color: #e5b343;
+    background-color: #1e3a4d;
   }
 }
 
@@ -116,12 +116,19 @@
   background-color: #f8f9fa;
   color: #212529;
   border-color: #f8f9fa;
+  &:hover {
+    background-color: #e9ecef;
+  }
 }
 
 @utility btn-white {
   background-color: #fff;
   color: var(--color-font);
   border-color: #ddd;
+  &:hover {
+    background-color: #f8f9fa;
+    border-color: #ccc;
+  }
 }
 
 @utility form-control {

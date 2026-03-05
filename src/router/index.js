@@ -33,13 +33,7 @@ const routes = [
     props: true,
     meta: { requiresAuth: true, title: 'Bootcamp' },
   },
-  {
-    path: '/search',
-    name: 'search',
-    component: () => import('@/views/Search.vue'),
-    meta: { requiresAuth: true, title: 'Find People' },
-  },
-  {
+{
     path: '/settings',
     name: 'settings',
     component: () => import('@/views/Settings.vue'),

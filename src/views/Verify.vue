@@ -67,7 +67,7 @@ async function resendCode() {
 
       <form @submit.prevent="handleSubmit" class="mt-4">
         <input type="text" class="form-control mb-3" placeholder="Verification Code" v-model.trim="auth.guest.verification_code" />
-        <button type="submit" class="btn btn-yellow">Submit</button>
+        <button type="submit" class="btn btn-cta">Submit</button>
       </form>
 
       <hr class="my-4" />

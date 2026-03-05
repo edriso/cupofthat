@@ -58,7 +58,7 @@ const handlePost = handleSubmit(async (values) => {
 <template>
   <div>
     <button
-      class="fixed bottom-6 right-6 z-30 btn btn-yellow rounded-full w-14 h-14 text-2xl shadow-lg flex items-center justify-center p-0"
+      class="fixed bottom-6 right-6 z-30 btn btn-cta rounded-full w-14 h-14 text-2xl shadow-lg flex items-center justify-center p-0"
       @click="showModal = true"
     >
       <i class="icon icon-plus"></i>
@@ -91,7 +91,7 @@ const handlePost = handleSubmit(async (values) => {
         <div class="w-full">
           <div class="flex justify-between items-center">
             <input type="text" class="form-control w-1/4" maxlength="30" placeholder="Tag" v-model.trim="tag" />
-            <button class="btn btn-yellow" :disabled="app.loading" type="submit" form="new-post-form">
+            <button class="btn btn-cta" :disabled="app.loading" type="submit" form="new-post-form">
               {{ app.loading ? 'Posting...' : 'Post' }}
             </button>
           </div>

@@ -49,19 +49,19 @@ onMounted(() => {
         </router-link>
 
         <div class="flex items-center gap-2">
-          <span
+          <button
             class="cursor-pointer transition-colors"
-            :class="post.liked ? 'text-react' : 'text-gray-400'"
+            :class="post.liked ? 'text-react' : 'text-gray-400 hover:text-react'"
             @click="handleLikes"
           >
-            <i class="icon icon-heart-empty"></i>
+            <i :class="post.liked ? 'icon icon-heart' : 'icon icon-heart-empty'"></i>
             <span v-if="post.likesCount > 0" class="text-sm ml-0.5">{{ post.likesCount }}</span>
-          </span>
+          </button>
           <BaseDropdown noCaret dropleft>
             <template #button-content>
               <i class="icon icon-dot-3"></i>
             </template>
-            <button class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm" @click="emit('report')">
+            <button class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm cursor-pointer" @click="emit('report')">
               Report Abuse
             </button>
           </BaseDropdown>
@@ -72,7 +72,9 @@ onMounted(() => {
         {{ post.content }}
       </p>
 
-      <p v-if="post.tag" class="text-xs text-cyan font-medium">{{ post.tag }}</p>
+      <span v-if="post.tag" class="inline-block text-xs text-cyan font-medium bg-cyan/10 px-2.5 py-0.5 rounded-full">
+        #{{ post.tag }}
+      </span>
     </div>
   </div>
 </template>

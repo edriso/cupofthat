@@ -37,14 +37,14 @@ onMounted(() => {
       <div class="flex justify-center gap-2 mb-5">
         <button
           class="btn btn-sm rounded-full px-5 transition-all"
-          :class="sortBy === 'global' ? 'btn-yellow shadow' : 'btn-white hover:shadow'"
+          :class="sortBy === 'global' ? 'btn-cta shadow' : 'btn-white hover:shadow'"
           @click="sortBy = 'global'"
         >
           Global
         </button>
         <button
           class="btn btn-sm rounded-full px-5 transition-all"
-          :class="sortBy === 'following' ? 'btn-yellow shadow' : 'btn-white hover:shadow'"
+          :class="sortBy === 'following' ? 'btn-cta shadow' : 'btn-white hover:shadow'"
           @click="sortBy = 'following'"
         >
           Following

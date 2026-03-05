@@ -82,7 +82,7 @@ const handleLogin = handleSubmit(async (values) => {
           <p v-if="errors.password" class="invalid-feedback">{{ errors.password }}</p>
         </div>
         <button
-          class="btn btn-yellow btn-block"
+          class="btn btn-cta btn-block"
           type="submit"
           :disabled="app.loading"
         >

@@ -41,21 +41,21 @@ const year = ref(new Date().getFullYear())
       <h2 class="text-2xl font-bold text-center mb-8">Things we do with Cupofthat</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="text-center p-6">
-          <p class="text-4xl font-bold text-yellow">01</p>
+          <p class="text-4xl font-bold text-cyan">01</p>
           <h3 class="text-xl font-medium mt-2">Share Achievements</h3>
           <p class="text-gray-600 mt-2">
             Our community is full of little achievements that boost our productivity.
           </p>
         </div>
         <div class="text-center p-6">
-          <p class="text-4xl font-bold text-yellow">02</p>
+          <p class="text-4xl font-bold text-cyan">02</p>
           <h3 class="text-xl font-medium mt-2">Days Count</h3>
           <p class="text-gray-600 mt-2">
             We track each day and its record whether you've did something on that day or not.
           </p>
         </div>
         <div class="text-center p-6">
-          <p class="text-4xl font-bold text-yellow">03</p>
+          <p class="text-4xl font-bold text-cyan">03</p>
           <h3 class="text-xl font-medium mt-2">Get Badges</h3>
           <p class="text-gray-600 mt-2">
             We are challenging each other, and there are badges for the active members.
