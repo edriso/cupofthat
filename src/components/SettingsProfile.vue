@@ -5,8 +5,6 @@ import { useSettingsStore } from '@/stores/settings'
 import { useAppStore } from '@/stores/app'
 import { useUserImage } from '@/composables/useUserImage'
 import ChangeProfilePicture from '@/components/ChangeProfilePicture.vue'
-import BaseAlert from '@/components/ui/BaseAlert.vue'
-
 const auth = useAuthStore()
 const settings = useSettingsStore()
 const app = useAppStore()
@@ -114,13 +112,37 @@ async function showUpdatedAlert() {
     </button>
   </form>
 
-  <!-- Alerts -->
-  <div class="fixed bottom-4 right-4 z-50">
-    <BaseAlert v-if="!alertMsg" :show="dismissCountDown" variant="success" @dismissed="dismissCountDown = 0">
-      Profile Updated!
-    </BaseAlert>
-    <BaseAlert v-if="alertMsg" :show="true" variant="danger">
-      {{ alertMsg }}
-    </BaseAlert>
-  </div>
+  <!-- Toast -->
+  <Teleport to="body">
+    <Transition
+      enter-active-class="transition duration-300 ease-out"
+      enter-from-class="opacity-0 translate-y-4"
+      enter-to-class="opacity-100 translate-y-0"
+      leave-active-class="transition duration-200 ease-in"
+      leave-from-class="opacity-100 translate-y-0"
+      leave-to-class="opacity-0 translate-y-4"
+    >
+      <div v-if="dismissCountDown > 0 && !alertMsg" class="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 bg-nav text-white pl-3 pr-4 py-2.5 rounded-lg shadow-lg text-sm font-medium">
+        <span class="w-5 h-5 rounded-full bg-green/20 flex items-center justify-center shrink-0">
+          <i class="icon icon-ok text-green text-xs"></i>
+        </span>
+        Profile updated
+      </div>
+    </Transition>
+    <Transition
+      enter-active-class="transition duration-300 ease-out"
+      enter-from-class="opacity-0 translate-y-4"
+      enter-to-class="opacity-100 translate-y-0"
+      leave-active-class="transition duration-200 ease-in"
+      leave-from-class="opacity-100 translate-y-0"
+      leave-to-class="opacity-0 translate-y-4"
+    >
+      <div v-if="alertMsg" class="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 bg-react text-white pl-3 pr-4 py-2.5 rounded-lg shadow-lg text-sm font-medium">
+        <span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+          <i class="icon icon-cancel text-xs"></i>
+        </span>
+        {{ alertMsg }}
+      </div>
+    </Transition>
+  </Teleport>
 </template>

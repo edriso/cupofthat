@@ -25,8 +25,18 @@ const daysInMonth = computed(() => {
   return new Date(year.value, currentDate.value.getMonth() + 1, 0).getDate()
 })
 
+const calendarStart = computed(() => Number(auth.user.calendar_start) || 0)
+
+const allWeekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+
+const weekdayLabels = computed(() => {
+  const start = calendarStart.value
+  return [...allWeekdays.slice(start), ...allWeekdays.slice(0, start)]
+})
+
 const firstDayOfWeek = computed(() => {
-  return new Date(year.value, currentDate.value.getMonth(), 1).getDay()
+  const raw = new Date(year.value, currentDate.value.getMonth(), 1).getDay()
+  return (raw - calendarStart.value + 7) % 7
 })
 
 const activeDaysCount = computed(() => {
@@ -139,7 +149,7 @@ onMounted(() => {
         <!-- Weekday labels -->
         <div class="grid grid-cols-7 px-4">
           <div
-            v-for="d in ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']"
+            v-for="d in weekdayLabels"
             :key="d"
             class="text-center text-[10px] font-medium text-gray uppercase tracking-wider py-2"
           >
