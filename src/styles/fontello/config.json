@@ -1,0 +1,190 @@
+{
+  "name": "",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "474656633f79ea2f1dad59ff63f6bf07",
+      "css": "star",
+      "code": 59397,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "7eed700d710c276569f95be26326fa5b",
+      "css": "heart-empty",
+      "code": 59404,
+      "src": "elusive"
+    },
+    {
+      "uid": "628e5fc59fc5965a6b91189467b037d5",
+      "css": "heart",
+      "code": 59405,
+      "src": "elusive"
+    },
+    {
+      "uid": "0d20938846444af8deb1920dc85a29fb",
+      "css": "logout",
+      "code": 59409,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "e99461abfef3923546da8d745372c995",
+      "css": "cog",
+      "code": 59410,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "d10920db2e79c997c5e783279291970c",
+      "css": "dot-3",
+      "code": 59417,
+      "src": "entypo"
+    },
+    {
+      "uid": "13b11ab72c6ae9c97ee12428e17f3a4e",
+      "css": "dot-2",
+      "code": 59419,
+      "src": "entypo"
+    },
+    {
+      "uid": "815503841e980c848f55e0271deacead",
+      "css": "link",
+      "code": 59421,
+      "src": "entypo"
+    },
+    {
+      "uid": "bczb7qup4axmc490xmuuv8qdhcnbgeyf",
+      "css": "user",
+      "code": 59427,
+      "src": "typicons"
+    },
+    {
+      "uid": "18be7ed7a4baf5713f2de51bf83b12f2",
+      "css": "newspaper",
+      "code": 62704,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "4c2a3128819fef9548d6f0d38a5e291a",
+      "css": "calendar",
+      "code": 59399,
+      "src": "typicons"
+    },
+    {
+      "uid": "4ba33d2607902cf690dd45df09774cb0",
+      "css": "plus-circled",
+      "code": 59401,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "hbvhbnoivp3qj8xpyqrxa7dvq9ntnci3",
+      "css": "plus",
+      "code": 59412,
+      "src": "modernpics"
+    },
+    {
+      "uid": "43ab845088317bd348dee1d975700c48",
+      "css": "ok-circled",
+      "code": 59395,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "0f4cae16f34ae243a6144c18a003f2d8",
+      "css": "cancel-circled",
+      "code": 59394,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "750058837a91edae64b03d60fc7e81a7",
+      "css": "dot-vertical",
+      "code": 61762,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "c2958cfd1eed4434ab6e4bd6ab337af9",
+      "css": "cup",
+      "code": 59430,
+      "src": "linecons"
+    },
+    {
+      "uid": "lnyme20kl7kh26it9yrqk7at10k6i0sf",
+      "css": "ribbon",
+      "code": 59393,
+      "src": "modernpics"
+    },
+    {
+      "uid": "ab656e280958018a7859eba9a1eabbc7",
+      "css": "trophy",
+      "code": 59392,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "2b8ea04aa0e500ae056f9c7934af18e6",
+      "css": "tree",
+      "code": 59396,
+      "src": "typicons"
+    },
+    {
+      "uid": "9dd9e835aebe1060ba7190ad2b2ed951",
+      "css": "search",
+      "code": 59398,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "e9107949dd6c9e8ab2b29ae07156e38c",
+      "css": "linkedin",
+      "code": 61665,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "8e04c98c8f5ca0a035776e3001ad2638",
+      "css": "facebook",
+      "code": 61594,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "627abcdb627cb1789e009c08e2678ef9",
+      "css": "twitter",
+      "code": 61593,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "5e0a374728ffa8d0ae1f331a8f648231",
+      "css": "github",
+      "code": 61715,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "a9862b9d5197886c1ad693ecd7120b31",
+      "css": "youtube",
+      "code": 61799,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "9c7fd7637a41b59a358cb70893f945a5",
+      "css": "rocket",
+      "code": 59408,
+      "src": "entypo"
+    },
+    {
+      "uid": "6a12c2b74456ea21cc984e11dec227a1",
+      "css": "globe",
+      "code": 59407,
+      "src": "entypo"
+    },
+    {
+      "uid": "610efad3150b6959e1b3fc863f39c60c",
+      "css": "gift",
+      "code": 59402,
+      "src": "typicons"
+    },
+    {
+      "uid": "7e4164950ffa4990961958b2d6318658",
+      "css": "info",
+      "code": 59403,
+      "src": "entypo"
+    }
+  ]
+}
