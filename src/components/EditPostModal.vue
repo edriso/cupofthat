@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 import { usePostStore } from '@/stores/post'
 import { useAppStore } from '@/stores/app'
 import BaseModal from '@/components/ui/BaseModal.vue'
@@ -23,6 +23,9 @@ const maxLetters = 220
 const editContent = ref('')
 const postImage = ref(null)
 const errorMsg = ref('')
+
+const charCount = computed(() => editContent.value?.length || 0)
+const charRatio = computed(() => charCount.value / maxLetters)
 
 watch(() => props.modelValue, (val) => {
   if (val) {
@@ -65,9 +68,18 @@ async function handlePostUpdate() {
         v-model="editContent"
         required
       ></textarea>
-      <p v-if="editContent.length > maxLetters - 40" class="text-right text-sm mt-1" :class="editContent.length > maxLetters - 10 ? 'text-react' : 'text-gray'">
-        {{ editContent.length }}/{{ maxLetters }}
-      </p>
+      <div v-if="charCount > 0" class="flex items-center gap-2 mt-1.5">
+        <div class="w-16 h-1 rounded-full bg-border overflow-hidden">
+          <div
+            class="h-full rounded-full transition-all"
+            :class="charRatio > 0.9 ? 'bg-react' : charRatio > 0.7 ? 'bg-yellow' : 'bg-green'"
+            :style="{ width: `${charRatio * 100}%` }"
+          ></div>
+        </div>
+        <span class="text-xs" :class="charRatio > 0.9 ? 'text-react' : 'text-gray'">
+          {{ charCount }}/{{ maxLetters }}
+        </span>
+      </div>
       <div class="mt-3">
         <BaseFileInput
           accept="image/jpeg, image/png, image/gif"

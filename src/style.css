@@ -101,14 +101,6 @@
   }
 }
 
-@utility btn-success {
-  background-color: var(--color-green);
-  color: #fff;
-  &:hover {
-    background-color: var(--color-green-dark);
-  }
-}
-
 @utility btn-primary {
   background-color: var(--color-cyan);
   color: #fff;
