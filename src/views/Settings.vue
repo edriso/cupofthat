@@ -1,19 +1,18 @@
 <script setup>
-import BaseTabs from '@/components/ui/BaseTabs.vue'
-import BaseTab from '@/components/ui/BaseTab.vue'
 import SettingsProfile from '@/components/SettingsProfile.vue'
 import SettingsAccount from '@/components/SettingsAccount.vue'
 </script>
 
 <template>
   <main class="page-container">
-    <BaseTabs>
-      <BaseTab title="Profile" active>
-        <SettingsProfile />
-      </BaseTab>
-      <BaseTab title="Account">
-        <SettingsAccount />
-      </BaseTab>
-    </BaseTabs>
+    <div class="max-w-lg mx-auto space-y-6 pt-4">
+      <h1 class="text-2xl font-bold">Settings</h1>
+
+      <SettingsProfile />
+
+      <hr class="border-border" />
+
+      <SettingsAccount />
+    </div>
   </main>
 </template>

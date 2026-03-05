@@ -115,7 +115,7 @@ onMounted(() => setUserProfile())
     <div class="max-w-xl mx-auto">
       <MakePost v-if="auth.hasNotPostedToday" />
 
-      <div class="bg-white rounded-lg shadow overflow-hidden mb-4">
+      <div class="bg-white rounded-lg shadow overflow-hidden mt-4 mb-4">
         <div
           class="h-40 bg-cover bg-center relative"
           :style="{ backgroundImage: `url(${authorCover})` }"

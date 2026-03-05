@@ -24,7 +24,6 @@
   --color-input-text: #495057;
   --font-family-sans: "Quicksand", sans-serif;
   --spacing-navbar: 4.375rem;
-  --spacing-page-top: calc(var(--spacing-navbar) + 1rem);
 }
 
 @layer base {
@@ -169,6 +168,6 @@
   margin-right: auto;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: var(--spacing-page-top);
+  padding-top: var(--spacing-navbar);
   padding-bottom: 2rem;
 }

@@ -106,7 +106,7 @@ onMounted(() => {
     <div class="max-w-xl mx-auto">
       <MakePost v-if="auth.hasNotPostedToday" />
 
-      <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+      <div class="bg-white rounded-xl shadow-sm overflow-hidden mt-4">
         <!-- Header -->
         <div class="px-5 pt-5 pb-3">
           <div class="flex items-center justify-between mb-1">

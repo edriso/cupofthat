@@ -41,7 +41,7 @@ function handleToggleFollow(match) {
 </script>
 
 <template>
-  <main class="page-container">
+  <main class="page-container pt-4">
     <div class="max-w-xl mx-auto">
       <div class="bg-white rounded-lg shadow p-4 mb-4">
         <form @submit.prevent="handleSearch">
