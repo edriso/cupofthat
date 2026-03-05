@@ -124,10 +124,6 @@ async function handleFeedback() {
                 <span class="font-bold text-yellow">3</span>
                 <span>Please, don't hesitate to <span class="text-cyan cursor-pointer hover:underline" @click="showFeedback = true">Contact us</span> for any feedback.</span>
               </li>
-              <li class="flex gap-3">
-                <span class="font-bold text-yellow">4</span>
-                <span>And if you would like to support us, you could <a href="https://ko-fi.com/cupofthat" target="_blank" rel="noopener noreferrer" class="text-react hover:underline">buy us coffee</a> <i class="icon-heart text-react"></i>!</span>
-              </li>
             </ul>
           </div>
         </BaseTab>
