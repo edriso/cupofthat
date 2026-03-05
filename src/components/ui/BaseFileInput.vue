@@ -3,7 +3,7 @@ import { ref } from 'vue'
 
 const props = defineProps({
   accept: { type: String, default: 'image/*' },
-  placeholder: { type: String, default: 'Choose a file' },
+  placeholder: { type: String, default: 'Add a photo' },
   size: { type: String, default: '' },
 })
 
@@ -19,15 +19,14 @@ function handleChange(e) {
 
 <template>
   <label
-    class="flex items-center border rounded cursor-pointer bg-white overflow-hidden"
-    :class="size === 'sm' ? 'text-sm' : ''"
+    class="flex items-center gap-2 px-3 py-2 rounded-lg border border-dashed border-gray/50 cursor-pointer text-darkgray hover:border-cyan hover:text-cyan hover:bg-cyan/5 transition-all"
+    :class="[
+      size === 'sm' ? 'text-xs py-1.5 px-2.5' : 'text-sm',
+      fileName ? 'border-cyan/40 bg-cyan/5 text-cyan' : '',
+    ]"
   >
-    <span class="px-3 py-1.5 bg-lightgray border-r text-darkgray whitespace-nowrap">
-      Browse
-    </span>
-    <span class="px-3 py-1.5 text-darkgray truncate flex-1">
-      {{ fileName || placeholder }}
-    </span>
+    <i class="icon" :class="fileName ? 'icon-ok' : 'icon-plus-circled'"></i>
+    <span class="truncate">{{ fileName || placeholder }}</span>
     <input type="file" :accept="accept" class="hidden" @change="handleChange" />
   </label>
 </template>
