@@ -6,7 +6,6 @@ import MakePost from '@/components/MakePost.vue'
 import Post from '@/components/Post.vue'
 import ReportPost from '@/components/ReportPost.vue'
 import PostImageModal from '@/components/PostImageModal.vue'
-import BaseDropdown from '@/components/ui/BaseDropdown.vue'
 
 const auth = useAuthStore()
 const postStore = usePostStore()
@@ -35,30 +34,24 @@ onMounted(() => {
     <div class="max-w-xl mx-auto">
       <MakePost v-if="auth.hasNotPostedToday" />
 
-      <div class="text-center mb-4">
-        <BaseDropdown variant="white" noCaret size="sm">
-          <template #button-content>
-            <i class="icon icon-dot-2"></i>
-          </template>
-          <button
-            class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm"
-            :class="{ 'font-bold text-cyan': sortBy === 'global' }"
-            @click="sortBy = 'global'"
-          >
-            Global
-          </button>
-          <hr class="my-1" />
-          <button
-            class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm"
-            :class="{ 'font-bold text-cyan': sortBy === 'following' }"
-            @click="sortBy = 'following'"
-          >
-            Following
-          </button>
-        </BaseDropdown>
+      <div class="flex justify-center gap-2 mb-5">
+        <button
+          class="btn btn-sm rounded-full px-5 transition-all"
+          :class="sortBy === 'global' ? 'btn-yellow shadow' : 'btn-white hover:shadow'"
+          @click="sortBy = 'global'"
+        >
+          Global
+        </button>
+        <button
+          class="btn btn-sm rounded-full px-5 transition-all"
+          :class="sortBy === 'following' ? 'btn-yellow shadow' : 'btn-white hover:shadow'"
+          @click="sortBy = 'following'"
+        >
+          Following
+        </button>
       </div>
 
-      <div v-if="postStore.posts.length">
+      <div v-if="filteredPosts.length">
         <Post
           v-for="post in filteredPosts"
           :key="post.id"
@@ -68,6 +61,11 @@ onMounted(() => {
         />
         <ReportPost ref="reporting" />
         <PostImageModal ref="showImageModal" />
+      </div>
+
+      <div v-else class="text-center py-12">
+        <i class="icon icon-newspaper text-4xl text-gray-300 mb-3 block"></i>
+        <p class="text-gray-400">No posts yet</p>
       </div>
     </div>
   </main>

@@ -11,7 +11,7 @@ const auth = useAuthStore()
 const usersStore = useUsersStore()
 
 const currentDate = ref(new Date())
-const showPost = ref(false)
+const selectedDay = ref(null)
 const selectedPost = ref({})
 const showImageModal = ref(null)
 
@@ -62,25 +62,30 @@ function prevMonth() {
   const d = new Date(currentDate.value)
   d.setMonth(d.getMonth() - 1)
   currentDate.value = d
+  selectedDay.value = null
 }
 
 function nextMonth() {
   const d = new Date(currentDate.value)
   d.setMonth(d.getMonth() + 1)
   currentDate.value = d
+  selectedDay.value = null
 }
 
 function dayClicked(day) {
-  if (day.active) {
-    showPost.value = !showPost.value
-    if (showPost.value) {
-      selectedPost.value = createPost({
-        id: 1,
-        content: `Post from ${day.date}`,
-        created_at: day.date,
-        owner: auth.user,
-      })
-    }
+  if (!day.active) return
+
+  if (selectedDay.value === day.date) {
+    selectedDay.value = null
+    selectedPost.value = {}
+  } else {
+    selectedDay.value = day.date
+    selectedPost.value = createPost({
+      id: 1,
+      content: `Post from ${day.date}`,
+      created_at: day.date,
+      owner: auth.user,
+    })
   }
 }
 
@@ -94,35 +99,57 @@ onMounted(() => {
     <div class="max-w-xl mx-auto">
       <MakePost v-if="auth.hasNotPostedToday" />
 
-      <div class="bg-white rounded-lg shadow p-4">
-        <div class="flex items-center justify-between mb-4">
-          <button class="btn btn-sm" @click="prevMonth">&laquo;</button>
+      <div class="bg-white rounded-lg shadow overflow-hidden">
+        <div class="flex items-center justify-between px-4 py-3 bg-nav text-white">
+          <button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/20 transition-colors text-lg" @click="prevMonth">
+            &laquo;
+          </button>
           <h3 class="text-lg font-medium">{{ monthName }}</h3>
-          <button class="btn btn-sm" @click="nextMonth">&raquo;</button>
+          <button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/20 transition-colors text-lg" @click="nextMonth">
+            &raquo;
+          </button>
         </div>
 
-        <div class="grid grid-cols-7 gap-1 text-center text-sm">
-          <div v-for="d in ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']" :key="d" class="font-medium text-gray-500 py-1">
-            {{ d }}
+        <div class="p-4">
+          <div class="grid grid-cols-7 gap-1 text-center text-xs mb-2">
+            <div v-for="d in ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']" :key="d" class="font-semibold text-gray-400 uppercase tracking-wide py-1">
+              {{ d }}
+            </div>
           </div>
-          <div
-            v-for="(day, i) in calendarDays"
-            :key="i"
-            class="py-2 rounded cursor-pointer transition-colors"
-            :class="{
-              'bg-green/20 text-green font-bold': day.active,
-              'bg-yellow/20 border border-yellow': day.isToday,
-              'hover:bg-gray-100': !day.empty && !day.active,
-            }"
-            @click="day.day && dayClicked(day)"
-          >
-            {{ day.day }}
+
+          <div class="grid grid-cols-7 gap-1 text-center text-sm">
+            <div
+              v-for="(day, i) in calendarDays"
+              :key="i"
+              class="relative aspect-square flex items-center justify-center rounded-lg transition-all"
+              :class="[
+                day.empty ? '' : 'cursor-pointer',
+                day.active && selectedDay === day.date
+                  ? 'bg-green text-white font-bold shadow-md scale-105'
+                  : day.active
+                    ? 'bg-green/15 text-green font-bold hover:bg-green/25'
+                    : day.isToday
+                      ? 'ring-2 ring-yellow font-semibold'
+                      : !day.empty
+                        ? 'hover:bg-gray-100 text-gray-600'
+                        : '',
+              ]"
+              @click="day.day && dayClicked(day)"
+            >
+              {{ day.day }}
+              <span v-if="day.active && day.count > 1" class="absolute -top-0.5 -right-0.5 w-4 h-4 bg-yellow text-white text-[10px] rounded-full flex items-center justify-center font-bold">
+                {{ day.count }}
+              </span>
+            </div>
           </div>
+        </div>
+
+        <div v-if="selectedDay" class="border-t bg-gray-50 px-4 py-3">
+          <p class="text-xs text-gray-400 uppercase tracking-wide">{{ selectedDay }}</p>
         </div>
       </div>
 
-      <div v-if="showPost && selectedPost.id" class="mt-4">
-        <hr class="mb-4" />
+      <div v-if="selectedDay && selectedPost.id" class="mt-4">
         <PostProfile
           :post="selectedPost"
           @showPostImage="showImageModal?.showModal(selectedPost.image)"
