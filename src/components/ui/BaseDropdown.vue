@@ -4,6 +4,7 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 defineProps({
   noCaret: { type: Boolean, default: false },
   dropleft: { type: Boolean, default: false },
+  dropup: { type: Boolean, default: false },
   variant: { type: String, default: '' },
   size: { type: String, default: '' },
 })
@@ -49,8 +50,11 @@ onBeforeUnmount(() => document.removeEventListener('click', handleClickOutside))
     >
       <div
         v-if="open"
-        class="absolute z-20 mt-1.5 bg-white rounded-lg shadow-lg ring-1 ring-black/5 w-max py-1 origin-top-right"
-        :class="dropleft ? 'right-0' : 'left-0'"
+        class="absolute z-20 bg-white rounded-lg shadow-lg ring-1 ring-black/5 w-max py-1"
+        :class="[
+          dropleft ? 'right-0' : 'left-0',
+          dropup ? 'bottom-full mb-1.5 origin-bottom-right' : 'mt-1.5 origin-top-right',
+        ]"
         @click="open = false"
       >
         <slot></slot>

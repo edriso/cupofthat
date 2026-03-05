@@ -48,8 +48,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-white rounded-lg shadow mb-4 overflow-hidden hover:shadow-md transition-shadow">
-    <div v-if="post.image" class="cursor-pointer overflow-hidden" @click="emit('showPostImage')">
+  <div class="bg-white rounded-lg shadow mb-4 hover:shadow-md transition-shadow">
+    <div v-if="post.image" class="cursor-pointer overflow-hidden rounded-t-lg" @click="emit('showPostImage')">
       <img :src="post.image" alt="post img" class="w-full object-cover max-h-80 hover:scale-[1.02] transition-transform duration-300" loading="lazy" />
     </div>
 
