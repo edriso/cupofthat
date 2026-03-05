@@ -134,7 +134,7 @@ function logout() {
         class="md:hidden fixed top-[var(--spacing-navbar)] left-0 right-0 z-40 bg-nav shadow-xl"
       >
         <!-- Profile card -->
-        <div class="flex items-center gap-3 px-5 py-4 border-b border-white/10">
+        <router-link :to="{ name: 'myaccount' }" class="flex items-center gap-3 px-5 py-4 border-b border-white/10 hover:bg-white/10 transition-colors">
           <img
             :src="getProfileImage(auth.user)"
             class="w-10 h-10 rounded-full object-cover ring-2 ring-white/20"
@@ -144,7 +144,7 @@ function logout() {
             <p class="font-semibold text-sm">{{ auth.user.firstname }} {{ auth.user.lastname }}</p>
             <p class="text-xs text-white/60">@{{ auth.user.username }}</p>
           </div>
-        </div>
+        </router-link>
 
         <!-- Nav links -->
         <div class="py-2">
@@ -154,13 +154,6 @@ function logout() {
           >
             <i class="icon icon-newspaper w-5 text-center text-white/70"></i>
             <span class="text-sm">Feeds</span>
-          </router-link>
-          <router-link
-            :to="{ name: 'myaccount' }"
-            class="flex items-center gap-3 px-5 py-3 hover:bg-white/10 transition-colors"
-          >
-            <i class="icon icon-user w-5 text-center text-white/70"></i>
-            <span class="text-sm">My Profile</span>
           </router-link>
           <router-link
             :to="{ name: 'calendar' }"
