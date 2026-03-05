@@ -44,51 +44,52 @@ onMounted(() => {
       <img :src="post.image" alt="Post photo" class="w-full object-cover max-h-80 hover:scale-[1.02] transition-transform duration-300" loading="lazy" />
     </div>
 
-    <div class="p-4">
-      <p
-        ref="contentText"
-        class="text-font leading-relaxed"
-        :class="{ 'max-h-64 overflow-hidden': longContent && !expanded }"
-      >
-        {{ post.content }}
-      </p>
-      <button v-if="longContent" class="text-xs text-cyan hover:underline mt-1" @click="expanded = !expanded">
-        {{ expanded ? 'Show less' : 'Read more' }}
-      </button>
+    <div class="px-4 pt-3 pb-4">
+      <div class="flex items-start justify-between gap-2">
+        <p
+          ref="contentText"
+          class="text-font leading-relaxed flex-1"
+          :class="{ 'max-h-64 overflow-hidden': longContent && !expanded }"
+        >
+          {{ post.content }}
+        </p>
 
-      <div class="flex items-center justify-between mt-3">
-        <div class="flex items-center gap-2">
-          <span v-if="post.tag" class="inline-block text-xs text-cyan font-medium bg-cyan/10 px-2.5 py-0.5 rounded-full">
-            #{{ post.tag }}
-          </span>
-          <router-link
-            v-if="!hideDate"
-            :to="{ name: 'preview', params: { postId: post.id } }"
-            class="text-xs text-gray hover:text-cyan transition-colors"
-            :title="formatDate(post.created_at, false)"
-          >
-            {{ formatDate(post.created_at) }}
-          </router-link>
-        </div>
-
-        <div class="flex items-center gap-1">
+        <div class="flex items-center gap-0.5 shrink-0 -mt-0.5">
           <button
-            class="flex items-center gap-1 transition-colors text-sm cursor-pointer p-1"
+            class="flex items-center gap-1 transition-colors cursor-pointer p-1"
             :class="post.liked ? 'text-react' : 'text-gray hover:text-react'"
             @click="handleLikes"
           >
-            <i :class="post.liked ? 'icon icon-heart' : 'icon icon-heart-empty'"></i>
+            <i class="text-sm" :class="post.liked ? 'icon icon-heart' : 'icon icon-heart-empty'"></i>
             <span v-if="post.likesCount > 0" class="text-xs">{{ post.likesCount }}</span>
           </button>
           <BaseDropdown noCaret dropleft>
             <template #button-content>
-              <i class="icon icon-dot-3 text-gray"></i>
+              <i class="icon icon-dot-3 text-gray text-sm"></i>
             </template>
-            <button class="block w-full text-left px-4 py-2.5 hover:bg-bg text-sm cursor-pointer" @click="showEdit = true">
+            <button class="block w-full text-left px-4 py-2 hover:bg-bg text-xs cursor-pointer" @click="showEdit = true">
               Edit Post
             </button>
           </BaseDropdown>
         </div>
+      </div>
+
+      <button v-if="longContent" class="text-xs text-cyan hover:underline mt-1" @click="expanded = !expanded">
+        {{ expanded ? 'Show less' : 'Read more' }}
+      </button>
+
+      <div v-if="post.tag || !hideDate" class="flex items-center gap-2 mt-2">
+        <span v-if="post.tag" class="inline-block text-xs text-cyan font-medium bg-cyan/10 px-2.5 py-0.5 rounded-full">
+          #{{ post.tag }}
+        </span>
+        <router-link
+          v-if="!hideDate"
+          :to="{ name: 'preview', params: { postId: post.id } }"
+          class="text-xs text-gray hover:text-cyan transition-colors"
+          :title="formatDate(post.created_at, false)"
+        >
+          {{ formatDate(post.created_at) }}
+        </router-link>
       </div>
     </div>
 
