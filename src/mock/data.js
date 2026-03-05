@@ -20,7 +20,6 @@ export const MOCK_USER = {
   following: [{ id: 2, username: "johndoe" }],
   blocklist: [],
   calendar_start: 1,
-  calendar_display: "month",
   is_verified: true,
   last_post_date: "",
   socials: {
@@ -51,7 +50,6 @@ export const MOCK_OTHER_USER = {
   following: [{ id: 1, username: "janedoe" }],
   blocklist: [],
   calendar_start: 1,
-  calendar_display: "month",
   is_verified: true,
   last_post_date: "",
   socials: {

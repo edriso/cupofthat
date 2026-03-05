@@ -87,22 +87,13 @@ async function showUpdatedAlert() {
     <section class="space-y-4">
       <h3 class="text-sm font-semibold text-darkgray uppercase tracking-wide">Preferences</h3>
 
-      <div class="grid grid-cols-2 gap-3">
-        <div>
-          <label class="block text-sm mb-1 text-darkgray">Calendar starts on</label>
-          <select class="form-control" v-model="auth.user.calendar_start">
-            <option value="6">Saturday</option>
-            <option value="0">Sunday</option>
-            <option value="1">Monday</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-sm mb-1 text-darkgray">Calendar display</label>
-          <select class="form-control" v-model="auth.user.calendar_display">
-            <option value="week">Weekly</option>
-            <option value="month">Monthly</option>
-          </select>
-        </div>
+      <div>
+        <label class="block text-sm mb-1 text-darkgray">Calendar starts on</label>
+        <select class="form-control" v-model="auth.user.calendar_start">
+          <option value="6">Saturday</option>
+          <option value="0">Sunday</option>
+          <option value="1">Monday</option>
+        </select>
       </div>
     </section>
 
@@ -122,10 +113,7 @@ async function showUpdatedAlert() {
       leave-from-class="opacity-100 translate-y-0"
       leave-to-class="opacity-0 translate-y-4"
     >
-      <div v-if="dismissCountDown > 0 && !alertMsg" class="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 bg-nav text-white pl-3 pr-4 py-2.5 rounded-lg shadow-lg text-sm font-medium">
-        <span class="w-5 h-5 rounded-full bg-green/20 flex items-center justify-center shrink-0">
-          <i class="icon icon-ok text-green text-xs"></i>
-        </span>
+      <div v-if="dismissCountDown > 0 && !alertMsg" class="fixed bottom-5 right-5 z-50 bg-nav text-white px-4 py-2.5 rounded-lg shadow-lg text-sm font-medium">
         Profile updated
       </div>
     </Transition>
@@ -137,10 +125,7 @@ async function showUpdatedAlert() {
       leave-from-class="opacity-100 translate-y-0"
       leave-to-class="opacity-0 translate-y-4"
     >
-      <div v-if="alertMsg" class="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 bg-react text-white pl-3 pr-4 py-2.5 rounded-lg shadow-lg text-sm font-medium">
-        <span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center shrink-0">
-          <i class="icon icon-cancel text-xs"></i>
-        </span>
+      <div v-if="alertMsg" class="fixed bottom-5 right-5 z-50 bg-react text-white px-4 py-2.5 rounded-lg shadow-lg text-sm font-medium">
         {{ alertMsg }}
       </div>
     </Transition>

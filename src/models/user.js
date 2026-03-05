@@ -17,7 +17,6 @@ export function createUser(attrs = {}) {
     following: attrs.following || [],
     blocklist: attrs.blocklist || [],
     calendar_start: attrs.calendar_start ?? 1,
-    calendar_display: attrs.calendar_display || 'month',
     is_verified: attrs.is_verified ?? false,
     last_post_date: attrs.last_post_date || '',
     socials: {
@@ -37,7 +36,6 @@ export function createUser(attrs = {}) {
         birthday: this.birthday,
         socials: this.socials,
         calendar_start: this.calendar_start,
-        calendar_display: this.calendar_display,
       }
     },
   }
