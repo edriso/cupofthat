@@ -111,16 +111,16 @@ onMounted(() => {
         <div class="px-5 pt-5 pb-3">
           <div class="flex items-center justify-between mb-1">
             <button
-              class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:text-font hover:bg-gray-100 transition-colors cursor-pointer text-lg"
+              class="w-8 h-8 flex items-center justify-center rounded-full text-gray hover:text-font hover:bg-lightgray transition-colors cursor-pointer text-lg"
               @click="prevMonth"
             >
               &lsaquo;
             </button>
             <h3 class="text-xl font-bold text-font tracking-tight">
-              {{ monthName }} <span class="text-gray-400 font-normal">{{ year }}</span>
+              {{ monthName }} <span class="text-gray font-normal">{{ year }}</span>
             </h3>
             <button
-              class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:text-font hover:bg-gray-100 transition-colors cursor-pointer text-lg"
+              class="w-8 h-8 flex items-center justify-center rounded-full text-gray hover:text-font hover:bg-lightgray transition-colors cursor-pointer text-lg"
               @click="nextMonth"
             >
               &rsaquo;
@@ -137,7 +137,7 @@ onMounted(() => {
           <div
             v-for="d in ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']"
             :key="d"
-            class="text-center text-[10px] font-medium text-gray-400 uppercase tracking-wider py-2"
+            class="text-center text-[10px] font-medium text-gray uppercase tracking-wider py-2"
           >
             {{ d }}
           </div>
@@ -161,7 +161,7 @@ onMounted(() => {
                     ? 'bg-cyan/15 text-nav font-semibold hover:bg-cyan/30 hover:scale-105'
                     : day.isToday
                       ? 'font-bold text-nav border-2 border-nav/25'
-                      : 'text-gray-500 hover:bg-gray-50',
+                      : 'text-darkgray hover:bg-bg',
               ]"
               @click="dayClicked(day)"
             >
@@ -182,12 +182,12 @@ onMounted(() => {
       >
         <div v-if="selectedDay && selectedPost.id" class="mt-4">
           <div class="flex items-center justify-between mb-2 px-1">
-            <p class="text-sm font-medium text-gray-500">
+            <p class="text-sm font-medium text-darkgray">
               <i class="icon icon-calendar text-cyan"></i>
               {{ selectedDateLabel }}
             </p>
             <button
-              class="text-xs text-gray-400 hover:text-gray-600 cursor-pointer"
+              class="text-xs text-gray hover:text-darkgray cursor-pointer"
               @click="selectedDay = null; selectedPost = {}"
             >
               <i class="icon icon-cancel-circled"></i>

@@ -41,10 +41,10 @@ function close() {
           class="relative bg-white rounded-xl shadow-2xl z-10 w-full mx-auto transform transition-all"
           :class="size === 'sm' ? 'max-w-sm' : 'max-w-lg'"
         >
-          <div v-if="!hideHeader" class="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+          <div v-if="!hideHeader" class="flex items-center justify-between px-5 py-4 border-b border-border-light">
             <h5 class="text-lg font-semibold">{{ title }}</h5>
             <button
-              class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors cursor-pointer"
+              class="w-8 h-8 flex items-center justify-center rounded-full text-gray hover:text-darkgray hover:bg-lightgray transition-colors cursor-pointer"
               @click="close"
             >
               <i class="icon icon-cancel-circled"></i>
@@ -55,7 +55,7 @@ function close() {
             <slot></slot>
           </div>
 
-          <div v-if="!hideFooter" class="flex justify-end px-5 py-3 border-t border-gray-100 bg-gray-50/50 rounded-b-xl">
+          <div v-if="!hideFooter" class="flex justify-end px-5 py-3 border-t border-border-light bg-bg/50 rounded-b-xl">
             <slot name="footer">
               <button class="btn btn-light" @click="close">Close</button>
             </slot>

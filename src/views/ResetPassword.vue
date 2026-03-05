@@ -48,7 +48,7 @@ async function handleSubmit() {
       </BaseAlert>
       <form @submit.prevent="handleSubmit">
         <div class="mb-3">
-          <p class="text-gray-600"><span>{{ auth.guest.email }}</span></p>
+          <p class="text-darkgray"><span>{{ auth.guest.email }}</span></p>
         </div>
         <div class="mb-3">
           <input class="form-control" type="text" v-model.lazy="auth.guest.verification_code" placeholder="Verification Code" maxlength="8" autocomplete="off" />

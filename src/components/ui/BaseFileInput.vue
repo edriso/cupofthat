@@ -22,10 +22,10 @@ function handleChange(e) {
     class="flex items-center border rounded cursor-pointer bg-white overflow-hidden"
     :class="size === 'sm' ? 'text-sm' : ''"
   >
-    <span class="px-3 py-1.5 bg-gray-100 border-r text-gray-600 whitespace-nowrap">
+    <span class="px-3 py-1.5 bg-lightgray border-r text-darkgray whitespace-nowrap">
       Browse
     </span>
-    <span class="px-3 py-1.5 text-gray-500 truncate flex-1">
+    <span class="px-3 py-1.5 text-darkgray truncate flex-1">
       {{ fileName || placeholder }}
     </span>
     <input type="file" :accept="accept" class="hidden" @change="handleChange" />

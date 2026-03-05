@@ -27,7 +27,7 @@ const year = ref(new Date().getFullYear())
           <h2 class="text-4xl font-bold text-nav leading-tight">
             The best, easy &amp; exciting way to stop procrastinating and get things done
           </h2>
-          <p class="text-lg text-gray-600 mt-4">
+          <p class="text-lg text-darkgray mt-4">
             You don't have to go big to achieve your goals, 10 minutes a day is all you need!
           </p>
           <router-link :to="{ name: 'signup' }" class="btn btn-pink mt-6 inline-block">
@@ -43,21 +43,21 @@ const year = ref(new Date().getFullYear())
         <div class="text-center p-6">
           <p class="text-4xl font-bold text-cyan">01</p>
           <h3 class="text-xl font-medium mt-2">Share Achievements</h3>
-          <p class="text-gray-600 mt-2">
+          <p class="text-darkgray mt-2">
             Our community is full of little achievements that boost our productivity.
           </p>
         </div>
         <div class="text-center p-6">
           <p class="text-4xl font-bold text-cyan">02</p>
           <h3 class="text-xl font-medium mt-2">Days Count</h3>
-          <p class="text-gray-600 mt-2">
+          <p class="text-darkgray mt-2">
             We track each day and its record whether you've did something on that day or not.
           </p>
         </div>
         <div class="text-center p-6">
           <p class="text-4xl font-bold text-cyan">03</p>
           <h3 class="text-xl font-medium mt-2">Get Badges</h3>
-          <p class="text-gray-600 mt-2">
+          <p class="text-darkgray mt-2">
             We are challenging each other, and there are badges for the active members.
           </p>
         </div>
@@ -69,7 +69,7 @@ const year = ref(new Date().getFullYear())
       </div>
     </div>
 
-    <footer class="text-center py-6 text-gray-500">
+    <footer class="text-center py-6 text-darkgray">
       <p>Cupofthat &copy; {{ year }} | All rights reserved</p>
     </footer>
   </div>

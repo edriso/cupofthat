@@ -69,7 +69,7 @@ function handleToggleFollow(match) {
           />
         </ul>
 
-        <h5 v-if="searchKey && !usersMatch.length && !app.loading" class="text-center text-gray-500 mt-4">
+        <h5 v-if="searchKey && !usersMatch.length && !app.loading" class="text-center text-darkgray mt-4">
           We couldn't find "{{ searchKey }}"
         </h5>
       </div>

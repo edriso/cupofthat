@@ -64,8 +64,8 @@ onMounted(() => {
       </div>
 
       <div v-else class="text-center py-12">
-        <i class="icon icon-newspaper text-4xl text-gray-300 mb-3 block"></i>
-        <p class="text-gray-400">No posts yet</p>
+        <i class="icon icon-newspaper text-4xl text-gray/70 mb-3 block"></i>
+        <p class="text-gray">No posts yet</p>
       </div>
     </div>
   </main>

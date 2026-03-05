@@ -70,7 +70,7 @@ async function handlePostUpdate() {
         v-model="editContent"
         required
       ></textarea>
-      <p v-if="editContent.length > maxLetters - 40" class="text-right text-sm mt-1" :class="editContent.length > maxLetters - 10 ? 'text-react' : 'text-gray-400'">
+      <p v-if="editContent.length > maxLetters - 40" class="text-right text-sm mt-1" :class="editContent.length > maxLetters - 10 ? 'text-react' : 'text-gray'">
         {{ editContent.length }}/{{ maxLetters }}
       </p>
       <div class="mt-3">

@@ -87,14 +87,14 @@ function logout() {
             v-if="dropdownOpen"
             class="absolute right-0 mt-2 bg-white text-font rounded-lg shadow-lg min-w-[10rem] py-1 z-50 overflow-hidden"
           >
-            <router-link :to="{ name: 'settings' }" class="flex items-center gap-2 px-4 py-2.5 hover:bg-gray-50 text-sm">
+            <router-link :to="{ name: 'settings' }" class="flex items-center gap-2 px-4 py-2.5 hover:bg-bg text-sm">
               <i class="icon icon-cog"></i> Settings
             </router-link>
-            <router-link :to="{ name: 'about' }" class="flex items-center gap-2 px-4 py-2.5 hover:bg-gray-50 text-sm">
+            <router-link :to="{ name: 'about' }" class="flex items-center gap-2 px-4 py-2.5 hover:bg-bg text-sm">
               <i class="icon icon-info"></i> About
             </router-link>
-            <div class="my-1 border-t border-gray-100"></div>
-            <button class="flex items-center gap-2 w-full text-left px-4 py-2.5 hover:bg-gray-50 text-sm text-react cursor-pointer" @click="logout">
+            <div class="my-1 border-t border-border-light"></div>
+            <button class="flex items-center gap-2 w-full text-left px-4 py-2.5 hover:bg-bg text-sm text-react cursor-pointer" @click="logout">
               <i class="icon icon-logout"></i> Logout
             </button>
           </div>

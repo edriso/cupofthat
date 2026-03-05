@@ -36,7 +36,7 @@ async function showUpdatedAlert() {
           <input type="text" class="form-control" maxlength="14" v-model.trim="auth.user.lastname" placeholder="Your last name *Optional*" />
         </div>
         <div class="mb-3">
-          <label class="block text-sm font-medium mb-1">Your Thing <small class="text-gray-400">(What is your craft?)</small></label>
+          <label class="block text-sm font-medium mb-1">Your Thing <small class="text-gray">(What is your craft?)</small></label>
           <input type="text" class="form-control" maxlength="30" v-model.trim="auth.user.craft" placeholder="Artist, Doctor, Teacher, Web Developer, etc.." />
         </div>
         <div class="mb-3">

@@ -64,7 +64,7 @@ onMounted(() => {
           <router-link
             v-if="!hideDate"
             :to="{ name: 'preview', params: { postId: post.id } }"
-            class="text-xs text-gray-400 hover:text-cyan transition-colors"
+            class="text-xs text-gray hover:text-cyan transition-colors"
             :title="formatDate(post.created_at, false)"
           >
             {{ formatDate(post.created_at) }}
@@ -74,7 +74,7 @@ onMounted(() => {
         <div class="flex items-center gap-1">
           <button
             class="flex items-center gap-1 transition-colors text-sm cursor-pointer p-1"
-            :class="post.liked ? 'text-react' : 'text-gray-400 hover:text-react'"
+            :class="post.liked ? 'text-react' : 'text-gray hover:text-react'"
             @click="handleLikes"
           >
             <i :class="post.liked ? 'icon icon-heart' : 'icon icon-heart-empty'"></i>
@@ -82,9 +82,9 @@ onMounted(() => {
           </button>
           <BaseDropdown noCaret dropleft>
             <template #button-content>
-              <i class="icon icon-dot-3 text-gray-400"></i>
+              <i class="icon icon-dot-3 text-gray"></i>
             </template>
-            <button class="block w-full text-left px-4 py-2.5 hover:bg-gray-50 text-sm cursor-pointer" @click="showEdit = true">
+            <button class="block w-full text-left px-4 py-2.5 hover:bg-bg text-sm cursor-pointer" @click="showEdit = true">
               Edit Post
             </button>
           </BaseDropdown>

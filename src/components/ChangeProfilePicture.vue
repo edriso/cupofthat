@@ -30,7 +30,7 @@ defineExpose({ openPicker })
 <template>
   <BaseModal v-model="showModal" title="Change Profile Picture" hideFooter>
     <div class="text-center">
-      <p class="mb-4 text-gray-600">Select a new profile picture</p>
+      <p class="mb-4 text-darkgray">Select a new profile picture</p>
       <label class="btn btn-success cursor-pointer">
         Choose File
         <input ref="fileInput" type="file" accept="image/jpeg, image/png, image/gif" class="hidden" @change="handleFile" />

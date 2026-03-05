@@ -44,7 +44,7 @@ async function handleSubmit() {
       </BaseAlert>
       <form @submit.prevent="handleSubmit">
         <div class="mb-3 text-center">
-          <h5 class="text-gray-600">It's ok if you forgot your password!</h5>
+          <h5 class="text-darkgray">It's ok if you forgot your password!</h5>
           <p v-if="errMsg" class="invalid-feedback">{{ errMsg }}</p>
         </div>
         <div class="mb-3">

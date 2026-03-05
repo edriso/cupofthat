@@ -133,15 +133,15 @@ onMounted(() => setUserProfile())
               <template #button-content>
                 <i class="icon icon-dot-3"></i>
               </template>
-              <button class="flex items-center gap-2 w-full text-left px-4 py-2.5 hover:bg-gray-50 text-sm cursor-pointer" @click="changeProfile?.openPicker()">
-                <i class="icon icon-user text-gray-400"></i> Change profile picture
+              <button class="flex items-center gap-2 w-full text-left px-4 py-2.5 hover:bg-bg text-sm cursor-pointer" @click="changeProfile?.openPicker()">
+                <i class="icon icon-user text-gray"></i> Change profile picture
               </button>
-              <button class="flex items-center gap-2 w-full text-left px-4 py-2.5 hover:bg-gray-50 text-sm cursor-pointer" @click="changeCover?.openPicker()">
-                <i class="icon icon-globe text-gray-400"></i> Change cover photo
+              <button class="flex items-center gap-2 w-full text-left px-4 py-2.5 hover:bg-bg text-sm cursor-pointer" @click="changeCover?.openPicker()">
+                <i class="icon icon-globe text-gray"></i> Change cover photo
               </button>
-              <div class="my-1 border-t border-gray-100"></div>
-              <router-link :to="{ name: 'settings' }" class="flex items-center gap-2 px-4 py-2.5 hover:bg-gray-50 text-sm">
-                <i class="icon icon-cog text-gray-400"></i> Edit profile
+              <div class="my-1 border-t border-border-light"></div>
+              <router-link :to="{ name: 'settings' }" class="flex items-center gap-2 px-4 py-2.5 hover:bg-bg text-sm">
+                <i class="icon icon-cog text-gray"></i> Edit profile
               </router-link>
             </BaseDropdown>
           </div>
@@ -158,7 +158,7 @@ onMounted(() => setUserProfile())
             </span>
           </h3>
 
-          <p class="text-gray-500">{{ usersStore.author.craft }}</p>
+          <p class="text-darkgray">{{ usersStore.author.craft }}</p>
 
           <p class="mt-1">
             <span class="inline-flex items-center gap-1 bg-nav/10 text-nav px-2 py-0.5 rounded-full text-sm font-medium">
@@ -170,7 +170,7 @@ onMounted(() => setUserProfile())
 
       <div v-if="authorHasBioOrSocials" class="bg-white rounded-lg shadow p-4 mb-4">
         <h5 class="font-medium mb-2">About Me</h5>
-        <p v-if="usersStore.author.bio" class="text-gray-600 mb-3">{{ usersStore.author.bio }}</p>
+        <p v-if="usersStore.author.bio" class="text-darkgray mb-3">{{ usersStore.author.bio }}</p>
         <ul class="flex gap-4">
           <li v-if="usersStore.author.socials?.facebook">
             <a :href="usersStore.author.socials.facebook" target="_blank" rel="noopener noreferrer" class="text-blue hover:opacity-70" title="Facebook">
@@ -188,7 +188,7 @@ onMounted(() => setUserProfile())
             </a>
           </li>
           <li v-if="usersStore.author.socials?.website">
-            <a :href="usersStore.author.socials.website" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:opacity-70" title="Website">
+            <a :href="usersStore.author.socials.website" target="_blank" rel="noopener noreferrer" class="text-darkgray hover:opacity-70" title="Website">
               <i class="icon icon-globe text-xl"></i>
             </a>
           </li>
@@ -228,7 +228,7 @@ onMounted(() => setUserProfile())
         </BaseModal>
       </div>
 
-      <hr class="my-4 border-gray-200" />
+      <hr class="my-4 border-border" />
 
       <div v-if="usersStore.authorPosts.length">
         <template v-if="myProfile">

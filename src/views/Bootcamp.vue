@@ -29,9 +29,9 @@ onMounted(() => {
     <div class="max-w-xl mx-auto">
       <img :src="selectedBootcamp.img" :alt="selectedBootcamp.name" class="w-full rounded-lg shadow mb-4" />
       <h3 class="text-2xl font-bold">{{ selectedBootcamp.name }}</h3>
-      <p v-if="selectedBootcamp.long" class="text-gray-500 mt-1">Duration: {{ selectedBootcamp.long }}</p>
-      <p v-if="selectedBootcamp.fee" class="text-gray-500">Fee: {{ selectedBootcamp.fee }}$</p>
-      <p class="mt-3 text-gray-600">{{ selectedBootcamp.details }}</p>
+      <p v-if="selectedBootcamp.long" class="text-darkgray mt-1">Duration: {{ selectedBootcamp.long }}</p>
+      <p v-if="selectedBootcamp.fee" class="text-darkgray">Fee: {{ selectedBootcamp.fee }}$</p>
+      <p class="mt-3 text-darkgray">{{ selectedBootcamp.details }}</p>
       <a v-if="selectedBootcamp.intro" :href="selectedBootcamp.intro" target="_blank" rel="noopener" class="text-cyan hover:underline block mt-2">
         Introduction
       </a>

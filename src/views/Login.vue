@@ -103,7 +103,7 @@ const handleLogin = handleSubmit(async (values) => {
       <h6 class="text-center text-sm mt-2">
         <router-link :to="{ name: 'about' }" class="gray-text">About Us</router-link>
       </h6>
-      <p v-if="photographer" class="text-center text-xs text-gray-400 mt-1">
+      <p v-if="photographer" class="text-center text-xs text-gray mt-1">
         Photo by {{ photographer }}
       </p>
     </template>

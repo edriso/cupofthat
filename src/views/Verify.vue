@@ -63,7 +63,7 @@ async function resendCode() {
         We sent the verification code to
         <span class="font-medium text-cyan">{{ auth.guest.email }}</span>
       </p>
-      <p class="text-sm text-gray-500 mt-1">Please check your spam or junk mail folder too!</p>
+      <p class="text-sm text-darkgray mt-1">Please check your spam or junk mail folder too!</p>
 
       <form @submit.prevent="handleSubmit" class="mt-4">
         <input type="text" class="form-control mb-3" placeholder="Verification Code" v-model.trim="auth.guest.verification_code" />

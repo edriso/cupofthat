@@ -12,10 +12,10 @@ const visible = ref(false)
 let timer = null
 
 const variantClasses = {
-  success: 'bg-green-100 text-green-800 border-green-300',
-  danger: 'bg-red-100 text-red-800 border-red-300',
-  info: 'bg-blue-100 text-blue-800 border-blue-300',
-  warning: 'bg-yellow-100 text-yellow-800 border-yellow-300',
+  success: 'bg-green/10 text-green-dark border-green/30',
+  danger: 'bg-react/10 text-react-dark border-react/30',
+  info: 'bg-blue/10 text-nav border-blue/30',
+  warning: 'bg-yellow/15 text-font border-yellow/40',
 }
 
 watch(

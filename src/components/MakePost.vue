@@ -75,7 +75,7 @@ const handlePost = handleSubmit(async (values) => {
         <div class="flex items-center justify-between">
           <h3 class="text-lg font-semibold text-font">Day #{{ auth.user.postsCount + 1 }}</h3>
           <button
-            class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors cursor-pointer"
+            class="w-8 h-8 flex items-center justify-center rounded-full text-gray hover:text-darkgray hover:bg-lightgray transition-colors cursor-pointer"
             @click="showModal = false"
           >
             <i class="icon icon-cancel-circled"></i>
@@ -96,14 +96,14 @@ const handlePost = handleSubmit(async (values) => {
 
           <div class="flex justify-between items-center mt-1.5">
             <div v-if="charCount > 0" class="flex items-center gap-2">
-              <div class="w-16 h-1 rounded-full bg-gray-200 overflow-hidden">
+              <div class="w-16 h-1 rounded-full bg-border overflow-hidden">
                 <div
                   class="h-full rounded-full transition-all"
                   :class="charRatio > 0.9 ? 'bg-react' : charRatio > 0.7 ? 'bg-yellow' : 'bg-green'"
                   :style="{ width: `${charRatio * 100}%` }"
                 ></div>
               </div>
-              <span class="text-xs" :class="charRatio > 0.9 ? 'text-react' : 'text-gray-400'">
+              <span class="text-xs" :class="charRatio > 0.9 ? 'text-react' : 'text-gray'">
                 {{ charCount }}/{{ maxLetters }}
               </span>
             </div>

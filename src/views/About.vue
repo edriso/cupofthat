@@ -55,10 +55,10 @@ async function handleFeedback() {
       <div class="max-w-2xl mx-auto text-center mb-8">
         <h4 class="text-xl font-bold">About Us</h4>
         <h5 class="text-lg font-bold mt-2">We Share One Little Achievement Every Day!</h5>
-        <p class="text-gray-500 mt-2">
+        <p class="text-darkgray mt-2">
           We are a productive community that our daily habit is sharing one little achievement of that goal in mind while the time of drinking one cup of coffee or something. So it's about 5, 10 minutes or so to learn, practice, do, or make something new!
         </p>
-        <p class="text-sm text-gray-400 mt-1">(1.01)<sup>365</sup> = 37.8</p>
+        <p class="text-sm text-gray mt-1">(1.01)<sup>365</sup> = 37.8</p>
       </div>
 
       <h4 class="text-xl font-bold text-center mb-4">How it Works</h4>

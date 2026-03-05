@@ -71,7 +71,7 @@ onMounted(() => {
           <router-link
             v-if="post.created_at"
             :to="{ name: 'preview', params: { postId: post.id } }"
-            class="block text-xs text-gray-400 hover:text-cyan transition-colors"
+            class="block text-xs text-gray hover:text-cyan transition-colors"
             :title="formatDate(post.created_at, false)"
           >
             {{ formatDate(post.created_at) }}
@@ -79,12 +79,12 @@ onMounted(() => {
         </div>
         <BaseDropdown noCaret dropleft>
           <template #button-content>
-            <i class="icon icon-dot-3 text-gray-400"></i>
+            <i class="icon icon-dot-3 text-gray"></i>
           </template>
-          <button v-if="isUserPostOwner" class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm cursor-pointer" @click="showEdit = true">
+          <button v-if="isUserPostOwner" class="block w-full text-left px-4 py-2 hover:bg-bg text-sm cursor-pointer" @click="showEdit = true">
             Edit Post
           </button>
-          <button v-else class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm cursor-pointer" @click="emit('report')">
+          <button v-else class="block w-full text-left px-4 py-2 hover:bg-bg text-sm cursor-pointer" @click="emit('report')">
             Report Abuse
           </button>
         </BaseDropdown>
@@ -105,10 +105,10 @@ onMounted(() => {
         #{{ post.tag }}
       </span>
 
-      <div class="flex items-center pt-2 border-t border-gray-100">
+      <div class="flex items-center pt-2 border-t border-border-light">
         <button
           class="flex items-center gap-1.5 transition-colors text-sm cursor-pointer"
-          :class="post.liked ? 'text-react' : 'text-gray-400 hover:text-react'"
+          :class="post.liked ? 'text-react' : 'text-gray hover:text-react'"
           @click="handlePostLikes"
         >
           <i :class="post.liked ? 'icon icon-heart' : 'icon icon-heart-empty'"></i>

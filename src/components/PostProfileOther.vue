@@ -42,7 +42,7 @@ onMounted(() => {
       <div class="flex justify-between items-center mb-2">
         <router-link
           :to="{ name: 'preview', params: { postId: post.id } }"
-          class="text-sm text-gray-500 hover:text-cyan"
+          class="text-sm text-darkgray hover:text-cyan"
           :title="formatDate(post.created_at, false)"
         >
           {{ formatDate(post.created_at) }}
@@ -51,7 +51,7 @@ onMounted(() => {
         <div class="flex items-center gap-2">
           <button
             class="cursor-pointer transition-colors"
-            :class="post.liked ? 'text-react' : 'text-gray-400 hover:text-react'"
+            :class="post.liked ? 'text-react' : 'text-gray hover:text-react'"
             @click="handleLikes"
           >
             <i :class="post.liked ? 'icon icon-heart' : 'icon icon-heart-empty'"></i>
@@ -61,7 +61,7 @@ onMounted(() => {
             <template #button-content>
               <i class="icon icon-dot-3"></i>
             </template>
-            <button class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm cursor-pointer" @click="emit('report')">
+            <button class="block w-full text-left px-4 py-2 hover:bg-bg text-sm cursor-pointer" @click="emit('report')">
               Report Abuse
             </button>
           </BaseDropdown>

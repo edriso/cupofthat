@@ -73,12 +73,12 @@ function openUsername() {
   <div>
     <div class="max-w-md mx-auto">
       <ul class="bg-white rounded-lg shadow divide-y">
-        <li class="px-4 py-3 cursor-pointer hover:bg-gray-50" @click="showFollowing = true">Following List</li>
-        <li class="px-4 py-3 cursor-pointer hover:bg-gray-50" @click="showFollowers = true">Followers List</li>
-        <li class="px-4 py-3 cursor-pointer hover:bg-gray-50" @click="showBlocked = true">Blocked List</li>
-        <li class="px-4 py-3 cursor-pointer hover:bg-gray-50" @click="showPassword = true">Change Password</li>
-        <li class="px-4 py-3 cursor-pointer hover:bg-gray-50" @click="openUsername">Change Username</li>
-        <li class="px-4 py-3 cursor-pointer hover:bg-gray-50" @click="showEmail = true">Change Email</li>
+        <li class="px-4 py-3 cursor-pointer hover:bg-bg" @click="showFollowing = true">Following List</li>
+        <li class="px-4 py-3 cursor-pointer hover:bg-bg" @click="showFollowers = true">Followers List</li>
+        <li class="px-4 py-3 cursor-pointer hover:bg-bg" @click="showBlocked = true">Blocked List</li>
+        <li class="px-4 py-3 cursor-pointer hover:bg-bg" @click="showPassword = true">Change Password</li>
+        <li class="px-4 py-3 cursor-pointer hover:bg-bg" @click="openUsername">Change Username</li>
+        <li class="px-4 py-3 cursor-pointer hover:bg-bg" @click="showEmail = true">Change Email</li>
       </ul>
     </div>
 

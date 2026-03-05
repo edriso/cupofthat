@@ -28,7 +28,7 @@ provide('baseTabs', { registerTab, activeIndex })
         :class="
           activeIndex === i
             ? 'border-b-2 border-nav text-nav'
-            : 'text-gray-500 hover:text-gray-700'
+            : 'text-darkgray hover:text-font'
         "
         @click="activeIndex = i"
       >
