@@ -133,15 +133,15 @@ onMounted(() => setUserProfile())
               <template #button-content>
                 <i class="icon icon-dot-3"></i>
               </template>
-              <button class="flex items-center gap-2 w-full text-left px-4 py-2.5 hover:bg-bg text-sm cursor-pointer" @click="changeProfile?.openPicker()">
-                <i class="icon icon-user text-gray"></i> Change profile picture
+              <button class="block w-full text-left px-4 py-2 hover:bg-bg text-xs cursor-pointer whitespace-nowrap" @click="changeProfile?.openPicker()">
+                Change profile picture
               </button>
-              <button class="flex items-center gap-2 w-full text-left px-4 py-2.5 hover:bg-bg text-sm cursor-pointer" @click="changeCover?.openPicker()">
-                <i class="icon icon-globe text-gray"></i> Change cover photo
+              <button class="block w-full text-left px-4 py-2 hover:bg-bg text-xs cursor-pointer whitespace-nowrap" @click="changeCover?.openPicker()">
+                Change cover photo
               </button>
-              <div class="my-1 border-t border-border-light"></div>
-              <router-link :to="{ name: 'settings' }" class="flex items-center gap-2 px-4 py-2.5 hover:bg-bg text-sm">
-                <i class="icon icon-cog text-gray"></i> Edit profile
+              <div class="my-0.5 border-t border-border-light"></div>
+              <router-link :to="{ name: 'settings' }" class="block px-4 py-2 hover:bg-bg text-xs whitespace-nowrap">
+                Edit profile
               </router-link>
             </BaseDropdown>
           </div>

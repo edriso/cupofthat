@@ -49,7 +49,7 @@ onBeforeUnmount(() => document.removeEventListener('click', handleClickOutside))
     >
       <div
         v-if="open"
-        class="absolute z-20 mt-1.5 bg-white rounded-lg shadow-lg ring-1 ring-black/5 min-w-[11rem] py-1.5 origin-top-right"
+        class="absolute z-20 mt-1.5 bg-white rounded-lg shadow-lg ring-1 ring-black/5 w-max py-1 origin-top-right"
         :class="dropleft ? 'right-0' : 'left-0'"
         @click="open = false"
       >
