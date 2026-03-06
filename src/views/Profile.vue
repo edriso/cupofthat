@@ -143,14 +143,11 @@ onMounted(() => setUserProfile())
         <!-- Profile Info -->
         <div class="relative px-5 pb-5">
           <!-- Avatar -->
-          <div class="flex items-end justify-between -mt-12 mb-3">
-            <img
-              :src="authorPhoto"
-              alt="profile picture"
-              class="w-24 h-24 rounded-full object-cover border-4 border-white relative z-10 shadow-sm"
-            />
-
-          </div>
+          <img
+            :src="authorPhoto"
+            alt="profile picture"
+            class="w-24 h-24 rounded-full object-cover border-4 border-white relative z-10 shadow-sm -mt-12 mb-3"
+          />
 
           <!-- Name & Craft -->
           <h3 class="text-xl font-bold">
