@@ -83,7 +83,6 @@ Your backend should implement these REST endpoints. All authenticated routes exp
 |--------|-------------------------------|--------------|--------------------|
 | GET    | `/api/users/:username`        | -            | `{ user }`         |
 | GET    | `/api/users/:username/posts`  | -            | `{ posts: [...] }` |
-| GET    | `/api/users/search?q=`        | -            | `{ users: [...] }` |
 | POST   | `/api/users/:username/block`    | -          | `{ message }`      |
 | POST   | `/api/users/:username/unblock`  | -          | `{ message }`      |
 

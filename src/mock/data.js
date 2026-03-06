@@ -16,7 +16,6 @@ export const MOCK_USER = {
   lastname: "Doe",
   username: "janedoe",
   craft: "Designer",
-  about: "Coffee enthusiast & creative thinker.",
   bio: "Coffee enthusiast & creative thinker.",
   email: "jane@example.com",
   birthday: "1995-06-15",
@@ -40,7 +39,6 @@ export const MOCK_OTHER_USER = {
   lastname: "Doe",
   username: "johndoe",
   craft: "Developer",
-  about: "Building things one cup at a time.",
   bio: "Building things one cup at a time.",
   email: "john@example.com",
   birthday: "1992-03-20",
@@ -62,7 +60,6 @@ export const MOCK_POSTS = [
   {
     id: 1,
     content: "Just had the best cup of pour-over this morning. Notes of blueberry and dark chocolate.",
-    tags: "coffee",
     tag: "coffee",
     image: "https://picsum.photos/seed/post1/600/400",
     newImage: null,
@@ -74,7 +71,6 @@ export const MOCK_POSTS = [
   {
     id: 2,
     content: "Sketching out a new logo concept. Sometimes the simplest ideas take the longest.",
-    tags: "design",
     tag: "design",
     image: "https://picsum.photos/seed/post2/600/400",
     newImage: null,
@@ -86,7 +82,6 @@ export const MOCK_POSTS = [
   {
     id: 3,
     content: "Morning run done. 5K in 24 minutes. Feeling grateful for the energy today.",
-    tags: "fitness",
     tag: "fitness",
     image: null,
     newImage: null,

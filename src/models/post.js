@@ -2,7 +2,6 @@ export function createPost(attrs = {}) {
   return {
     id: attrs.id || null,
     content: attrs.content || '',
-    tags: attrs.tags || '',
     tag: attrs.tag || '',
     image: attrs.image || null,
     newImage: attrs.newImage || null,

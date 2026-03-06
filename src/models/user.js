@@ -5,7 +5,6 @@ export function createUser(attrs = {}) {
     lastname: attrs.lastname || '',
     username: attrs.username || '',
     craft: attrs.craft || '',
-    about: attrs.about || '',
     bio: attrs.bio || '',
     email: attrs.email || '',
     birthday: attrs.birthday || '',

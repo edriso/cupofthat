@@ -4,7 +4,6 @@ import { useAuthStore } from '@/stores/auth'
 import { createUser } from '@/models/user'
 import { createPost } from '@/models/post'
 import {
-  MOCK_USER,
   MOCK_OTHER_USER,
   MOCK_POSTS,
   MOCK_CALENDAR,
@@ -91,12 +90,6 @@ export const useUsersStore = defineStore('users', () => {
     return { data }
   }
 
-  async function searchUsers(query) {
-    if (USE_MOCKS) return { data: { users: [MOCK_USER, MOCK_OTHER_USER] } }
-    const { data } = await api.get('/users/search', { params: { q: query } })
-    return { data }
-  }
-
   return {
     author,
     authorPosts,
@@ -108,6 +101,5 @@ export const useUsersStore = defineStore('users', () => {
     unblockUser,
     setCoverImage,
     setProfileImage,
-    searchUsers,
   }
 })

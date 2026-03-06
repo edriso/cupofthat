@@ -69,9 +69,9 @@ const year = ref(new Date().getFullYear())
             <div class="w-14 h-14 rounded-full bg-yellow/10 flex items-center justify-center mx-auto mb-4">
               <i class="icon icon-cup text-yellow text-2xl"></i>
             </div>
-            <h3 class="text-lg font-bold text-nav mb-2">Earn Badges</h3>
+            <h3 class="text-lg font-bold text-nav mb-2">Collect Cups</h3>
             <p class="text-darkgray text-sm leading-relaxed">
-              Challenge each other and collect badges as you stay active.
+              Every post earns you a cup. Stay active and watch your collection grow.
             </p>
           </div>
         </div>

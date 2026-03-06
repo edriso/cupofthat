@@ -23,10 +23,7 @@ const showEdit = ref(false)
 
 const postOwner = computed(() => createUser(props.post.owner))
 const isUserPostOwner = computed(() => postOwner.value.id === auth.user.id)
-const postTags = computed(() => {
-  if (typeof props.post.tags === 'string') return props.post.tags
-  return Array.isArray(props.post.tags) ? props.post.tags.map((t) => t.name).join(',') : ''
-})
+const postTags = computed(() => props.post.tag || '')
 
 function handlePostLikes() {
   if (!props.post.liked) {
