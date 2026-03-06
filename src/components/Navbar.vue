@@ -101,7 +101,7 @@ function logout() {
         </Transition>
       </div>
 
-      <router-link :to="{ name: 'myaccount' }">
+      <router-link :to="{ name: 'profile', params: { username: auth.user.username } }">
         <img
           :src="getProfileImage(auth.user)"
           class="w-8 h-8 rounded-full object-cover ring-2 ring-white/30 hover:ring-cyan transition-all"
@@ -134,7 +134,7 @@ function logout() {
         class="md:hidden fixed top-[var(--spacing-navbar)] left-0 right-0 z-40 bg-nav shadow-xl"
       >
         <!-- Profile card -->
-        <router-link :to="{ name: 'myaccount' }" class="flex items-center gap-3 px-5 py-4 border-b border-white/10 hover:bg-white/10 transition-colors">
+        <router-link :to="{ name: 'profile', params: { username: auth.user.username } }" class="flex items-center gap-3 px-5 py-4 border-b border-white/10 hover:bg-white/10 transition-colors">
           <img
             :src="getProfileImage(auth.user)"
             class="w-10 h-10 rounded-full object-cover ring-2 ring-white/20"
