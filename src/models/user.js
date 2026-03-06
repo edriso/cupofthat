@@ -12,7 +12,6 @@ export function createUser(attrs = {}) {
     password: attrs.password || '',
     images: attrs.images || [],
     postsCount: attrs.postsCount || 0,
-    activeDays: attrs.activeDays || 0,
     blocklist: attrs.blocklist || [],
     calendar_start: attrs.calendar_start ?? 1,
     is_verified: attrs.is_verified ?? false,

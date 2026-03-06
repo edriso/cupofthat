@@ -118,7 +118,6 @@ The backend should return user objects matching this structure:
     { "type": "user_covers", "image": "https://..." }
   ],
   "postsCount": 5,
-  "activeDays": 42,
   "blocklist": [{ "id": 3, "username": "blocked", "name": "Blocked User" }],
   "calendar_start": 1,
   "calendar_display": "month",

@@ -147,21 +147,14 @@ onMounted(() => setUserProfile())
           />
 
           <!-- Name & Craft -->
-          <h3 class="text-xl font-bold">
+          <h3 class="text-xl font-bold flex items-center gap-2">
             {{ usersStore.author.name }}
-            <span v-if="usersStore.author.activeDays && myProfile" class="text-nav/60 text-sm font-medium ml-1" :title="`Active for ${usersStore.author.activeDays} days`">
-              <i class="icon icon-cup"></i> {{ usersStore.author.activeDays }}
+            <span class="inline-flex items-center gap-1 bg-nav/10 text-nav px-2 py-0.5 rounded-full text-xs font-medium">
+              <i class="icon icon-cup"></i> {{ usersStore.author.postsCount }}
             </span>
           </h3>
 
           <p v-if="usersStore.author.craft" class="text-darkgray text-sm">{{ usersStore.author.craft }}</p>
-
-          <!-- Stats row -->
-          <div class="flex items-center gap-3 mt-3">
-            <span class="inline-flex items-center gap-1 bg-nav/10 text-nav px-2.5 py-1 rounded-full text-sm font-medium">
-              <i class="icon icon-cup"></i> {{ usersStore.author.postsCount }}
-            </span>
-          </div>
 
           <!-- Bio & Website -->
           <div v-if="authorHasBioOrWebsite" class="mt-4 pt-4 border-t border-border-light">
