@@ -6,8 +6,6 @@ import { useAppStore } from '@/stores/app'
 import { createGuest } from '@/models/guest'
 import BaseModal from '@/components/ui/BaseModal.vue'
 import BaseAlert from '@/components/ui/BaseAlert.vue'
-import ListFollowing from '@/components/ListFollowing.vue'
-import ListFollowers from '@/components/ListFollowers.vue'
 import ListBlocked from '@/components/ListBlocked.vue'
 
 const auth = useAuthStore()
@@ -15,8 +13,6 @@ const settings = useSettingsStore()
 const app = useAppStore()
 
 const guest = ref(createGuest())
-const showFollowing = ref(false)
-const showFollowers = ref(false)
 const showBlocked = ref(false)
 const showPassword = ref(false)
 const showUsername = ref(false)
@@ -75,8 +71,6 @@ const accountItems = [
 ]
 
 const listItems = [
-  { label: 'Following', icon: 'icon-ok-circled', count: () => auth.user.following.length, action: () => (showFollowing.value = true) },
-  { label: 'Followers', icon: 'icon-heart', count: () => auth.user.followers.length, action: () => (showFollowers.value = true) },
   { label: 'Blocked', icon: 'icon-cancel-circled', count: () => auth.user.blocklist.length, action: () => (showBlocked.value = true) },
 ]
 </script>
@@ -120,14 +114,6 @@ const listItems = [
   </div>
 
   <!-- Modals -->
-  <BaseModal v-model="showFollowing" :title="`Following (${auth.user.following.length})`" hideFooter>
-    <ListFollowing />
-  </BaseModal>
-
-  <BaseModal v-model="showFollowers" :title="`Followers (${auth.user.followers.length})`" hideFooter>
-    <ListFollowers />
-  </BaseModal>
-
   <BaseModal v-model="showBlocked" :title="`Blocked (${auth.user.blocklist.length})`" hideFooter>
     <ListBlocked />
   </BaseModal>

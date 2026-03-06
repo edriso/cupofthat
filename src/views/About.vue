@@ -85,7 +85,7 @@ async function handleFeedback() {
               </li>
               <li class="flex gap-3 items-start">
                 <span class="shrink-0 w-7 h-7 rounded-full bg-yellow/20 text-yellow font-bold text-sm flex items-center justify-center">2</span>
-                <span>Switch between global posts or posts from people you follow.</span>
+                <span>Discover what others are working on and get inspired.</span>
               </li>
               <li class="flex gap-3 items-start">
                 <span class="shrink-0 w-7 h-7 rounded-full bg-yellow/20 text-yellow font-bold text-sm flex items-center justify-center">3</span>

@@ -8,7 +8,7 @@ Built with Vue 3, Pinia, Vue Router, and Tailwind CSS 4.
 
 - Daily posting with text, images, and tags
 - User profiles with cover photos and bios
-- Follow/unfollow and block/unblock users
+- Block/unblock users
 - Activity calendar tracking post streaks
 - Achievement badges
 - Post likes and reporting

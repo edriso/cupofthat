@@ -84,8 +84,6 @@ Your backend should implement these REST endpoints. All authenticated routes exp
 | GET    | `/api/users/:username`        | -            | `{ user }`         |
 | GET    | `/api/users/:username/posts`  | -            | `{ posts: [...] }` |
 | GET    | `/api/users/search?q=`        | -            | `{ users: [...] }` |
-| POST   | `/api/users/:username/follow`   | -          | `{ message }`      |
-| POST   | `/api/users/:username/unfollow` | -          | `{ message }`      |
 | POST   | `/api/users/:username/block`    | -          | `{ message }`      |
 | POST   | `/api/users/:username/unblock`  | -          | `{ message }`      |
 
@@ -122,8 +120,6 @@ The backend should return user objects matching this structure:
   ],
   "postsCount": 5,
   "activeDays": 42,
-  "followers": [{ "id": 2, "username": "johndoe", "name": "John Doe" }],
-  "following": [{ "id": 2, "username": "johndoe", "name": "John Doe" }],
   "blocklist": [{ "id": 3, "username": "blocked", "name": "Blocked User" }],
   "calendar_start": 1,
   "calendar_display": "month",

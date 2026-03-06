@@ -13,8 +13,6 @@ export function createUser(attrs = {}) {
     images: attrs.images || [],
     postsCount: attrs.postsCount || 0,
     activeDays: attrs.activeDays || 0,
-    followers: attrs.followers || [],
-    following: attrs.following || [],
     blocklist: attrs.blocklist || [],
     calendar_start: attrs.calendar_start ?? 1,
     is_verified: attrs.is_verified ?? false,

@@ -1,11 +1,9 @@
 <script setup>
-import { ref, computed } from 'vue'
-import { useAuthStore } from '@/stores/auth'
+import { ref } from 'vue'
 import { useUsersStore } from '@/stores/users'
 import { useAppStore } from '@/stores/app'
 import SearchResult from '@/components/SearchResult.vue'
 
-const auth = useAuthStore()
 const usersStore = useUsersStore()
 const app = useAppStore()
 
@@ -16,25 +14,6 @@ function handleSearch() {
   if (searchKey.value) {
     usersStore.searchUsers(searchKey.value).then((res) => {
       usersMatch.value = res.data.users || []
-    })
-  }
-}
-
-function isFollowingMatch(match) {
-  return !!match.followers?.find((f) => f.username === auth.user.username)
-}
-
-function handleToggleFollow(match) {
-  const following = isFollowingMatch(match)
-  if (following) {
-    match.followers = match.followers.filter((f) => f.id !== auth.user.id)
-    usersStore.unfollowUser(match.username).then(() => {
-      auth.user.following = auth.user.following.filter((f) => f.id !== match.id)
-    })
-  } else {
-    match.followers.push(auth.user)
-    usersStore.followUser(match.username).then(() => {
-      auth.user.following.push(match)
     })
   }
 }
@@ -64,8 +43,6 @@ function handleToggleFollow(match) {
           v-for="match in usersMatch"
           :key="match.id"
           :match="match"
-          :isFollowing="isFollowingMatch(match)"
-          @toggleFollow="handleToggleFollow(match)"
         />
       </ul>
 

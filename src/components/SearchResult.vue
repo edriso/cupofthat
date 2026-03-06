@@ -1,14 +1,10 @@
 <script setup>
-import { useAuthStore } from '@/stores/auth'
 import { useUserImage } from '@/composables/useUserImage'
 
 const props = defineProps({
   match: Object,
-  isFollowing: Boolean,
 })
 
-const emit = defineEmits(['toggleFollow'])
-const auth = useAuthStore()
 const { getProfileImage } = useUserImage()
 </script>
 
@@ -24,13 +20,5 @@ const { getProfileImage } = useUserImage()
         <p class="text-xs text-darkgray truncate">@{{ match.username }}</p>
       </div>
     </router-link>
-    <button
-      v-if="match.username !== auth.user.username"
-      class="btn btn-sm text-xs shrink-0"
-      :class="isFollowing ? 'bg-nav/10 text-nav' : 'btn-white'"
-      @click="emit('toggleFollow', match)"
-    >
-      {{ isFollowing ? 'Following' : 'Follow' }}
-    </button>
   </li>
 </template>

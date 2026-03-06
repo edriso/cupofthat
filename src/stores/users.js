@@ -65,18 +65,6 @@ export const useUsersStore = defineStore('users', () => {
     return { data }
   }
 
-  async function followUser(username) {
-    if (USE_MOCKS) return { data: { message: 'Followed' } }
-    const { data } = await api.post(`/users/${username}/follow`)
-    return { data }
-  }
-
-  async function unfollowUser(username) {
-    if (USE_MOCKS) return { data: { message: 'Unfollowed' } }
-    const { data } = await api.post(`/users/${username}/unfollow`)
-    return { data }
-  }
-
   async function blockUser(username) {
     if (USE_MOCKS) return { data: { message: 'Blocked' } }
     const { data } = await api.post(`/users/${username}/block`)
@@ -126,8 +114,6 @@ export const useUsersStore = defineStore('users', () => {
     fetchUserPosts,
     getCalendar,
     getBadge,
-    followUser,
-    unfollowUser,
     blockUser,
     unblockUser,
     setCoverImage,

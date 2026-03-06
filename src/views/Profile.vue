@@ -20,7 +20,6 @@ const auth = useAuthStore()
 const usersStore = useUsersStore()
 const { getProfileImage, getCoverImage } = useUserImage()
 
-const isFollowing = ref(false)
 const isBlocked = ref(false)
 const showBlockModal = ref(false)
 const reporting = ref(null)
@@ -42,7 +41,6 @@ watch(currentUsername, () => setUserProfile())
 
 watch(() => usersStore.author, (author) => {
   if (author) {
-    isFollowing.value = !!author.followers?.find((f) => f.username === auth.user.username)
     isBlocked.value = !!auth.user.blocklist?.find((b) => b.username === author.username)
   }
 })
@@ -61,20 +59,6 @@ function setUserProfile() {
   }
 }
 
-function toggleFollow() {
-  if (isFollowing.value) {
-    isFollowing.value = false
-    usersStore.unfollowUser(usersStore.author.username).then(() => {
-      auth.user.following = auth.user.following.filter((f) => f.id !== usersStore.author.id)
-    })
-  } else {
-    isFollowing.value = true
-    usersStore.followUser(usersStore.author.username).then(() => {
-      auth.user.following.push(usersStore.author)
-    })
-  }
-}
-
 function handleBlock() {
   if (isBlocked.value) {
     isBlocked.value = false
@@ -86,7 +70,6 @@ function handleBlock() {
     isBlocked.value = true
     usersStore.blockUser(usersStore.author.username).then(() => {
       auth.user.blocklist.push(usersStore.author)
-      auth.user.following = auth.user.following.filter((f) => f.id !== usersStore.author.id)
       showBlockModal.value = false
       router.replace({ name: 'feeds' })
     })
@@ -167,25 +150,6 @@ onMounted(() => setUserProfile())
               class="w-24 h-24 rounded-full object-cover border-4 border-white relative z-10 shadow-sm"
             />
 
-            <!-- Follow button for other users -->
-            <div v-if="!myProfile && !isBlocked" class="pb-1">
-              <button
-                class="btn btn-sm transition-all"
-                :class="isFollowing
-                  ? 'bg-nav/10 text-nav hover:bg-react/10 hover:text-react'
-                  : 'btn-cta'"
-                @click="toggleFollow"
-              >
-                <template v-if="isFollowing">
-                  <i class="icon icon-ok-circled"></i>
-                  <span class="ml-1">Following</span>
-                </template>
-                <template v-else>
-                  <i class="icon icon-plus-circled"></i>
-                  <span class="ml-1">Follow</span>
-                </template>
-              </button>
-            </div>
           </div>
 
           <!-- Name & Craft -->
@@ -202,9 +166,6 @@ onMounted(() => setUserProfile())
           <div class="flex items-center gap-3 mt-3">
             <span class="inline-flex items-center gap-1 bg-nav/10 text-nav px-2.5 py-1 rounded-full text-sm font-medium">
               <i class="icon icon-cup"></i> {{ usersStore.author.postsCount }}
-            </span>
-            <span v-if="usersStore.author.followers" class="text-sm text-darkgray">
-              <strong class="text-font">{{ usersStore.author.followers.length }}</strong> followers
             </span>
           </div>
 
