@@ -24,8 +24,10 @@ export const useUsersStore = defineStore('users', () => {
       const auth = useAuthStore()
       if (username === auth.user.username) {
         author.value = createUser(auth.user)
-      } else {
+      } else if (username === MOCK_OTHER_USER.username) {
         author.value = createUser(MOCK_OTHER_USER)
+      } else {
+        author.value = createUser()
       }
       return { data: { user: author.value } }
     }

@@ -43,7 +43,7 @@ const handlePost = handleSubmit(async (values) => {
   try {
     await postStore.storePost(post.request())
     auth.user.last_post_date = new Date()
-    if (route.name === 'profile' || route.name === 'myaccount') {
+    if (route.name === 'profile') {
       usersStore.fetchUserPosts(route.params.username)
     } else {
       postStore.fetchPosts()

@@ -82,15 +82,6 @@ const routes = [
     meta: { guestOnly: true, title: 'Join Us' },
   },
   {
-    path: '/profile/me',
-    name: 'myaccount',
-    redirect: () => {
-      const auth = useAuthStore()
-      return { name: 'profile', params: { username: auth.user.username } }
-    },
-    meta: { requiresAuth: true },
-  },
-  {
     path: '/profile/:username',
     name: 'profile',
     component: () => import('@/views/Profile.vue'),

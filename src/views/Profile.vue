@@ -46,13 +46,14 @@ watch(() => usersStore.author, (author) => {
 })
 
 function setUserProfile() {
-  let username = currentUsername.value
-  if (!username && route.name === 'myaccount') {
-    username = auth.user.username
-  }
+  const username = currentUsername.value
   if (username) {
     if (username === auth.user.username) usersStore.getBadge()
     usersStore.fetchUserProfile(username).then(() => {
+      if (!usersStore.author.id) {
+        router.replace({ name: 'notFound' })
+        return
+      }
       document.title = `Cup Of That | ${usersStore.author.name}'s Profile`
       usersStore.fetchUserPosts(username)
     })
@@ -77,10 +78,7 @@ function handleBlock() {
 }
 
 onBeforeMount(() => {
-  let username = route.params.username
-  if (!username && route.name === 'myaccount') {
-    username = auth.user.username
-  }
+  const username = route.params.username
   usersStore.fetchUserProfile(username).then(() => {
     const iAmBlocked = usersStore.author.blocklist?.find((b) => b.username === auth.user.username)
     const iBlockedThem = auth.user.blocklist?.find((b) => b.username === usersStore.author.username)
