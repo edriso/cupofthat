@@ -10,7 +10,6 @@ Built with Vue 3, Pinia, Vue Router, and Tailwind CSS 4.
 - User profiles with cover photos and bios
 - Block/unblock users
 - Activity calendar tracking post streaks
-- Achievement badges
 - Post likes and reporting
 - Email verification and password reset
 - Settings for profile, account, and preferences

@@ -110,21 +110,10 @@ async function handleFeedback() {
               </li>
               <li class="flex gap-3 items-start">
                 <span class="shrink-0 w-7 h-7 rounded-full bg-yellow/20 text-yellow font-bold text-sm flex items-center justify-center">2</span>
-                <div>Earn badges as you stay active:
-                  <div class="flex flex-wrap gap-2 mt-2">
-                    <span class="text-xs bg-bg px-2.5 py-1 rounded-full font-medium">Star — 15 days</span>
-                    <span class="text-xs bg-bg px-2.5 py-1 rounded-full font-medium">Ribbon — 30 days</span>
-                    <span class="text-xs bg-bg px-2.5 py-1 rounded-full font-medium">Rockstar — 45 days</span>
-                    <span class="text-xs bg-bg px-2.5 py-1 rounded-full font-medium">Trophy — 100 days</span>
-                  </div>
-                </div>
+                <span>Track your active days — every day you post counts!</span>
               </li>
               <li class="flex gap-3 items-start">
                 <span class="shrink-0 w-7 h-7 rounded-full bg-yellow/20 text-yellow font-bold text-sm flex items-center justify-center">3</span>
-                <span>Collect a cup of coffee for each active day!</span>
-              </li>
-              <li class="flex gap-3 items-start">
-                <span class="shrink-0 w-7 h-7 rounded-full bg-yellow/20 text-yellow font-bold text-sm flex items-center justify-center">4</span>
                 <span>Link your website or portfolio.</span>
               </li>
             </ul>

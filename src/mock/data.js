@@ -130,9 +130,3 @@ export const MOCK_CALENDAR = [
   },
 ]
 
-export const MOCK_BADGE = {
-  name: "Early Adopter",
-  description: "One of the first members of the community",
-  icon: "star",
-  value: 42,
-}

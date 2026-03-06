@@ -8,7 +8,6 @@ import {
   MOCK_OTHER_USER,
   MOCK_POSTS,
   MOCK_CALENDAR,
-  MOCK_BADGE,
 } from '@/mock/data'
 import { USE_MOCKS } from '@/helpers/config'
 import api from '@/services/api'
@@ -17,7 +16,7 @@ export const useUsersStore = defineStore('users', () => {
   const author = ref(createUser())
   const authorPosts = ref([])
   const userCalendar = ref([])
-  const userBadge = ref(null)
+
 
   async function fetchUserProfile(username) {
     if (USE_MOCKS) {
@@ -57,15 +56,6 @@ export const useUsersStore = defineStore('users', () => {
     return { data }
   }
 
-  async function getBadge() {
-    if (USE_MOCKS) {
-      userBadge.value = MOCK_BADGE
-      return { data: { data: MOCK_BADGE } }
-    }
-    const { data } = await api.get('/badge')
-    userBadge.value = data.data
-    return { data }
-  }
 
   async function blockUser(username) {
     if (USE_MOCKS) return { data: { message: 'Blocked' } }
@@ -111,11 +101,9 @@ export const useUsersStore = defineStore('users', () => {
     author,
     authorPosts,
     userCalendar,
-    userBadge,
     fetchUserProfile,
     fetchUserPosts,
     getCalendar,
-    getBadge,
     blockUser,
     unblockUser,
     setCoverImage,

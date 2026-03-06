@@ -87,12 +87,11 @@ Your backend should implement these REST endpoints. All authenticated routes exp
 | POST   | `/api/users/:username/block`    | -          | `{ message }`      |
 | POST   | `/api/users/:username/unblock`  | -          | `{ message }`      |
 
-### Calendar & Badge (authenticated)
+### Calendar (authenticated)
 
 | Method | Endpoint        | Response                                    |
 |--------|-----------------|---------------------------------------------|
 | GET    | `/api/calendar` | `{ data: [{ date, count }, ...] }`          |
-| GET    | `/api/badge`    | `{ data: { name, description, icon } }`     |
 
 ### Feedback (authenticated)
 

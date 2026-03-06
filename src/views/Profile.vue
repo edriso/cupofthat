@@ -48,7 +48,6 @@ watch(() => usersStore.author, (author) => {
 function setUserProfile() {
   const username = currentUsername.value
   if (username) {
-    if (username === auth.user.username) usersStore.getBadge()
     usersStore.fetchUserProfile(username).then(() => {
       if (!usersStore.author.id) {
         router.replace({ name: 'notFound' })
@@ -150,8 +149,8 @@ onMounted(() => setUserProfile())
           <!-- Name & Craft -->
           <h3 class="text-xl font-bold">
             {{ usersStore.author.name }}
-            <span v-if="usersStore.userBadge && myProfile" class="text-cyan" :title="`Active for ${usersStore.userBadge.value || ''} days`">
-              <i :class="'icon icon-' + usersStore.userBadge.icon"></i>
+            <span v-if="usersStore.author.activeDays && myProfile" class="text-nav/60 text-sm font-medium ml-1" :title="`Active for ${usersStore.author.activeDays} days`">
+              <i class="icon icon-cup"></i> {{ usersStore.author.activeDays }}
             </span>
           </h3>
 
