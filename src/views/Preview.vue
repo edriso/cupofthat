@@ -28,9 +28,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="page-container pt-4">
+  <main class="page-container">
     <div class="max-w-xl mx-auto">
-      <div v-if="loaded">
+      <div v-if="loaded" class="mt-4">
         <Post
           :post="postStore.post"
           @report="reporting?.showReport(postStore.post.id)"

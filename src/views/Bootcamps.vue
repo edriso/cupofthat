@@ -22,8 +22,8 @@ const filteredBootcamps = computed(() =>
 </script>
 
 <template>
-  <main class="page-container pt-4">
-    <div class="max-w-xl mx-auto">
+  <main class="page-container">
+    <div class="max-w-xl mx-auto mt-4">
       <div v-if="bootcamps.length && launched">
         <input v-if="bootcamps.length" type="text" placeholder="Search" class="form-control mb-4" v-model="search" />
         <ul class="text-center space-y-2">

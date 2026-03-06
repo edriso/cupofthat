@@ -25,8 +25,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="page-container pt-4">
-    <div class="max-w-xl mx-auto">
+  <main class="page-container">
+    <div class="max-w-xl mx-auto mt-4">
       <img :src="selectedBootcamp.img" :alt="selectedBootcamp.name" class="w-full rounded-lg shadow mb-4" />
       <h3 class="text-2xl font-bold">{{ selectedBootcamp.name }}</h3>
       <p v-if="selectedBootcamp.long" class="text-darkgray mt-1">Duration: {{ selectedBootcamp.long }}</p>
