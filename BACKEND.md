@@ -58,7 +58,7 @@ Your backend should implement these REST endpoints. All authenticated routes exp
 
 | Method | Endpoint                    | Request Body                                                   | Response       |
 |--------|-----------------------------|----------------------------------------------------------------|----------------|
-| PUT    | `/api/profile`              | `{ firstname, lastname, craft, bio, birthday, socials, calendar_start, calendar_display }` | `{ message }` |
+| PUT    | `/api/profile`              | `{ firstname, lastname, craft, bio, birthday, socials, calendar_start }` | `{ message }` |
 | PUT    | `/api/profile/email`        | `{ email, new_email, password }`                               | `{ message }`  |
 | PUT    | `/api/profile/username`     | `{ username }`                                                 | `{ message }`  |
 | PUT    | `/api/profile/password`     | `{ old_password, password, password_confirmation }`            | `{ message }`  |
@@ -119,7 +119,6 @@ The backend should return user objects matching this structure:
   "postsCount": 5,
   "blocklist": [{ "id": 3, "username": "blocked", "name": "Blocked User" }],
   "calendar_start": 1,
-  "calendar_display": "month",
   "is_verified": true,
   "last_post_date": "2026-03-05",
   "socials": { "website": "https://example.com" }
