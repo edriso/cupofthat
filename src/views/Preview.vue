@@ -10,19 +10,19 @@ const route = useRoute()
 const router = useRouter()
 const postStore = usePostStore()
 
-const selectedPost = ref({})
 const reporting = ref(null)
 const showImageModal = ref(null)
+const loaded = ref(false)
 
 onMounted(() => {
   const postId = route.params.postId
   postStore.fetchPost(postId).then(() => {
-    selectedPost.value = postStore.post
-    if (selectedPost.value) {
-      document.title = `CUP OF THAT | ${selectedPost.value.owner?.firstname || ''}'s Post`
-    } else {
-      router.push({ name: 'notFound' })
+    if (!postStore.post.id) {
+      router.replace({ name: 'notFound' })
+      return
     }
+    document.title = `Cup Of That | ${postStore.postOwner.firstname || ''}'s Post`
+    loaded.value = true
   })
 })
 </script>
@@ -30,11 +30,11 @@ onMounted(() => {
 <template>
   <main class="page-container pt-4">
     <div class="max-w-xl mx-auto">
-      <div v-if="postStore.postOwner.username">
+      <div v-if="loaded">
         <Post
-          :post="selectedPost"
-          @report="reporting?.showReport(selectedPost.id)"
-          @showPostImage="showImageModal?.showModal(selectedPost.image)"
+          :post="postStore.post"
+          @report="reporting?.showReport(postStore.post.id)"
+          @showPostImage="showImageModal?.showModal(postStore.post.image)"
         />
         <ReportPost ref="reporting" />
         <PostImageModal ref="showImageModal" />

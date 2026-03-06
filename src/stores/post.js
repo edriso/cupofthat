@@ -24,9 +24,9 @@ export const usePostStore = defineStore('post', () => {
 
   async function fetchPost(postId) {
     if (USE_MOCKS) {
-      const found = MOCK_POSTS.find((p) => p.id == postId) || MOCK_POSTS[0]
-      post.value = createPost(found)
-      return { data: { post: found } }
+      const found = MOCK_POSTS.find((p) => p.id == postId)
+      post.value = found ? createPost(found) : createPost()
+      return { data: { post: found || null } }
     }
     const { data } = await api.get(`/posts/${postId}`)
     post.value = createPost(data.post)
