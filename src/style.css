@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "./styles/fontello/css/fontello.css";
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
 @theme {
   --color-yellow: #fdc64a;
