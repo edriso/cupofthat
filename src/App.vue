@@ -9,7 +9,7 @@ const appStore = useAppStore()
 </script>
 
 <template>
-  <div id="app">
+  <div>
     <Navbar v-if="route.meta.requiresAuth" />
     <Loading v-if="appStore.loading" />
     <router-view />
